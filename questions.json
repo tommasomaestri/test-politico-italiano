@@ -1,0 +1,242 @@
+[
+  {
+    "id": "E1",
+    "text": "Lo Stato dovrebbe garantire un reddito minimo a chi non riesce a mantenersi con il lavoro.",
+    "pro": "Riduce la povertà estrema e la disuguaglianza; in molti paesi europei esiste con buoni risultati. Fornisce un cuscinetto che permette alle persone di cercare lavoro senza accettare qualsiasi condizione.",
+    "con": "Può ridurre l'incentivo a cercare lavoro; costa molto alle casse pubbliche. Rischia di diventare una misura permanente invece che transitoria, aumentando la dipendenza dallo Stato.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "E2",
+    "text": "Le grandi aziende e i redditi più alti dovrebbero essere tassati di più per finanziare servizi pubblici migliori.",
+    "pro": "Riduce la disuguaglianza e finanzia sanità, istruzione e infrastrutture accessibili a tutti. È il modello dei paesi scandinavi, tra i più soddisfatti al mondo.",
+    "con": "Può scoraggiare gli investimenti e spingere capitali e talenti all'estero. Un'alta pressione fiscale sulle imprese può ridurre l'occupazione e la competitività del paese.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "E3",
+    "text": "Le privatizzazioni di aziende pubbliche (trasporti, energia, poste) producono in generale servizi migliori e più efficienti.",
+    "pro": "La concorrenza privata stimola l'efficienza e l'innovazione; libera risorse pubbliche per altri scopi. Molte aziende pubbliche storicamente hanno accumulato debiti enormi.",
+    "con": "I servizi privatizzati tendono a tagliare le aree meno redditizie (zone rurali, utenti poveri). L'efficienza privata non coincide sempre con l'interesse collettivo.",
+    "axis": "economia",
+    "multiplier": 1
+  },
+  {
+    "id": "E4",
+    "text": "La flat tax — un'aliquota unica per tutti i redditi — è preferibile all'attuale sistema progressivo.",
+    "pro": "Semplifica il sistema fiscale e riduce l'evasione; premia chi guadagna di più, incentivando produttività. Molti paesi dell'Est Europa la usano con successo.",
+    "con": "Chi guadagna di meno paga proporzionalmente lo stesso di chi guadagna molto di più, aumentando la disuguaglianza. Ridurrebbe le entrate fiscali per servizi pubblici essenziali.",
+    "axis": "economia",
+    "multiplier": 1
+  },
+  {
+    "id": "E5",
+    "text": "Lo Stato dovrebbe intervenire attivamente per proteggere i settori industriali strategici dalla concorrenza straniera.",
+    "pro": "Tutela l'occupazione nazionale e la sovranità economica in settori chiave come acciaio, semiconduttori, difesa. Anche USA e Cina lo fanno sistematicamente.",
+    "con": "Il protezionismo aumenta i prezzi per i consumatori e provoca ritorsioni commerciali dagli altri paesi. Storicamente ha spesso protetto aziende inefficienti a spese di tutti.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "A1",
+    "text": "Le forze dell'ordine dovrebbero avere più poteri per intervenire in zone urbane ad alta criminalità, anche a scapito di alcune libertà individuali.",
+    "pro": "La sicurezza è un diritto primario: senza di essa le altre libertà sono compromesse. Le zone degradate sono spesso abbandonate dallo Stato e i residenti onesti ne pagano il prezzo.",
+    "con": "Poteri straordinari rischiano di essere usati in modo discriminatorio, colpendo soprattutto poveri e minoranze. La storia mostra che le eccezioni alla libertà tendono a diventare permanenti.",
+    "axis": "autorita",
+    "multiplier": 1
+  },
+  {
+    "id": "A2",
+    "text": "Il consumo personale di droghe leggere dovrebbe essere depenalizzato.",
+    "pro": "La penalizzazione del consumo personale non riduce il consumo ma riempie le carceri e criminalizza persone non pericolose per sé. Paesi come il Portogallo hanno avuto ottimi risultati con la depenalizzazione.",
+    "con": "Depenalizzare rischia di mandare un messaggio di normalizzazione, specialmente ai giovani. Le droghe 'leggere' possono essere un punto di ingresso verso sostanze più pericolose.",
+    "axis": "autorita",
+    "multiplier": -1
+  },
+  {
+    "id": "A3",
+    "text": "Lo Stato ha il diritto di monitorare le comunicazioni private dei cittadini per prevenire il terrorismo e la criminalità organizzata.",
+    "pro": "Le intercettazioni sono uno strumento fondamentale per smantellare reti criminali e terroristiche. Con adeguati controlli giudiziari, il rischio di abusi è limitato.",
+    "con": "La sorveglianza di massa viola la privacy e crea un potenziale strumento di controllo politico. Chi non ha nulla da nascondere ha comunque diritto alla riservatezza.",
+    "axis": "autorita",
+    "multiplier": 1
+  },
+  {
+    "id": "A4",
+    "text": "Le manifestazioni che bloccano il traffico o causano disagi alla cittadinanza dovrebbero essere vietate o fortemente limitate.",
+    "pro": "Il diritto di protesta non può compromettere il diritto altrui alla mobilità, al lavoro e alle cure mediche urgenti. Chi vuole farsi sentire ha altri strumenti legittimi.",
+    "con": "Il disagio è spesso l'unico strumento efficace per i movimenti senza accesso ai media o al potere. Limitare le forme di protesta scomoda svuota di fatto il diritto di manifestare.",
+    "axis": "autorita",
+    "multiplier": 1
+  },
+  {
+    "id": "A5",
+    "text": "I genitori dovrebbero avere piena libertà di scegliere se vaccinare o meno i propri figli, senza obblighi statali.",
+    "pro": "L'autonomia genitoriale e il consenso informato sono principi fondamentali; lo Stato non dovrebbe imporre trattamenti medici. La fiducia si costruisce con la persuasione, non con la coercizione.",
+    "con": "L'immunità di gregge protegge i soggetti fragili che non possono vaccinarsi: la scelta individuale ha conseguenze collettive. Le campagne vaccinali obbligatorie hanno eradicato malattie mortali.",
+    "axis": "autorita",
+    "multiplier": -1
+  },
+  {
+    "id": "T1",
+    "text": "Le coppie dello stesso sesso dovrebbero avere gli stessi diritti delle coppie eterosessuali, inclusa l'adozione.",
+    "pro": "L'uguaglianza davanti alla legge non ammette eccezioni basate sull'orientamento sessuale. I bambini adottati da coppie omosessuali non mostrano differenze di sviluppo rispetto agli altri.",
+    "con": "La famiglia tradizionale è un'istituzione con radici culturali e biologiche profonde che lo Stato non dovrebbe ridefinire per legge. Alcune tradizioni religiose e culturali la considerano un valore fondante della società.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "T2",
+    "text": "L'interruzione volontaria di gravidanza dovrebbe essere pienamente accessibile e garantita dal servizio sanitario nazionale.",
+    "pro": "L'accesso all'aborto sicuro è una questione di salute pubblica: dove è vietato, avviene comunque in condizioni pericolose. L'autonomia sulla propria salute riproduttiva è un diritto fondamentale.",
+    "con": "La vita del nascituro ha una sua dignità che la legge dovrebbe tutelare, almeno oltre una certa soglia. L'alta percentuale di medici obiettori riflette un genuino conflitto morale che lo Stato non può ignorare.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "T3",
+    "text": "L'insegnamento della storia e della cultura italiana dovrebbe avere più spazio nelle scuole rispetto ad approcci multiculturali.",
+    "pro": "Una solida identità culturale comune è il presupposto per una società coesa. Non conoscere le proprie radici rende più difficile il dialogo con le altre culture, non più facile.",
+    "con": "In una società sempre più plurale, formare cittadini capaci di relazionarsi con altre culture è una competenza essenziale. L'identità culturale non è minacciata dall'apertura, ma si arricchisce.",
+    "axis": "identita",
+    "multiplier": 1
+  },
+  {
+    "id": "T4",
+    "text": "La gestazione per altri (GPA) dovrebbe essere consentita, almeno nella forma solidale e non commerciale.",
+    "pro": "Consente a coppie infertili o dello stesso sesso di avere figli biologici; nella forma solidale non comporta sfruttamento economico. Vietarla in assoluto non elimina il fenomeno, ma spinge all'estero.",
+    "con": "Anche nella forma solidale, la GPA espone la donna a rischi fisici e psicologici per il beneficio altrui; il confine con lo sfruttamento è difficile da tracciare. Il corpo non dovrebbe essere strumento riproduttivo per terzi.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "T5",
+    "text": "Le scuole paritarie (private e religiose) che ricevono fondi pubblici svolgono un servizio equivalente a quello statale e andrebbero finanziate come tali.",
+    "pro": "I genitori che scelgono le paritarie pagano già le tasse per la scuola pubblica: finanziarle evita una doppia imposizione e amplia la libertà di scelta educativa. In molte zone le paritarie suppliscono a carenze della scuola statale.",
+    "con": "I fondi pubblici dovrebbero rafforzare la scuola statale, garante dell'uguaglianza di accesso e della laicità dell'istruzione. Finanziare scuole con orientamento religioso o ideologico preciso contraddice la neutralità dello Stato.",
+    "axis": "identita",
+    "multiplier": 1
+  },
+  {
+    "id": "N1",
+    "text": "L'Italia dovrebbe cedere ulteriore sovranità all'Unione Europea in cambio di più integrazione politica ed economica.",
+    "pro": "Un'Europa più unita è più forte nelle relazioni con USA, Cina e Russia; i problemi come clima, migrazione e difesa non hanno soluzione nazionale. L'integrazione ha portato decenni di pace e prosperità.",
+    "con": "La sovranità democratica appartiene ai cittadini italiani, non a burocrati non eletti a Bruxelles. Cedere ulteriore sovranità significa perdere la capacità di decidere su tasse, bilancio e politiche sociali.",
+    "axis": "nazione",
+    "multiplier": -1
+  },
+  {
+    "id": "N2",
+    "text": "L'Italia dovrebbe accogliere i richiedenti asilo e i migranti economici in modo più sistematico e organizzato.",
+    "pro": "L'Italia ha bisogno di immigrazione per sostenere il sistema pensionistico e colmare la carenza di lavoratori in settori chiave. L'accoglienza organizzata è più sicura e meno costosa dell'emergenza continua.",
+    "con": "L'integrazione richiede risorse e tempi che l'Italia attualmente non ha; flussi non controllati creano tensioni sociali e favoriscono il lavoro nero e lo sfruttamento. La solidarietà va esercitata con misura.",
+    "axis": "nazione",
+    "multiplier": -1
+  },
+  {
+    "id": "N3",
+    "text": "L'Italia dovrebbe aumentare significativamente le spese militari per contribuire alla difesa collettiva della NATO.",
+    "pro": "Il mondo è diventato più pericoloso: la guerra in Ucraina dimostra che la pace non è garantita. Un paese che non contribuisce alla propria difesa perde credibilità e influenza negli alleati.",
+    "con": "L'Italia ha bisogni sociali urgenti — sanità, istruzione, infrastrutture — che hanno priorità rispetto al riarmo. Aumentare le spese militari rischia di alimentare logiche di escalation invece di promuovere la diplomazia.",
+    "axis": "nazione",
+    "multiplier": 1
+  },
+  {
+    "id": "N4",
+    "text": "I prodotti italiani e le aziende italiane dovrebbero essere preferiti negli acquisti pubblici rispetto a quelli stranieri.",
+    "pro": "Gli appalti pubblici sono uno strumento legittimo di politica industriale: mantengono occupazione e know-how in Italia. Anche altri paesi lo fanno, inclusi USA e Francia.",
+    "con": "Il protezionismo negli appalti aumenta i costi per lo Stato e i contribuenti, e può portare a corruzione e inefficienza. Le regole UE sulla concorrenza esistono per garantire qualità e risparmio.",
+    "axis": "nazione",
+    "multiplier": 1
+  },
+  {
+    "id": "N5",
+    "text": "La lingua e la cultura italiana dovrebbero essere esplicitamente tutelate per legge contro l'influenza di lingue e culture straniere.",
+    "pro": "La lingua è il principale veicolo dell'identità di un popolo; una tutela attiva è normale in molti paesi (Francia, Islanda). La globalizzazione erode le culture locali in modo spesso irreversibile.",
+    "con": "Le culture vitali non hanno bisogno di protezione legale: si affermano attraverso la qualità e l'attrattiva. Le leggi sulla 'purezza linguistica' sono spesso simboliche e inapplicabili nella pratica.",
+    "axis": "nazione",
+    "multiplier": 1
+  },
+  {
+    "id": "G1",
+    "text": "Chi sconta una pena detentiva dovrebbe avere accesso garantito a programmi di istruzione, formazione professionale e supporto psicologico.",
+    "pro": "La Costituzione italiana prevede che la pena tenda alla rieducazione: investire nel reinserimento riduce la recidiva e abbassa i costi sociali a lungo termine. Il 70% dei detenuti che lavorano o studiano in carcere non torna a delinquere.",
+    "con": "Le risorse sono limitate: priorità deve avere il risarcimento alle vittime e la garanzia di condizioni dignitose per chi lavora nel sistema penitenziario. Il rischio è che il carcere diventi più comodo del necessario.",
+    "axis": "giustizia",
+    "multiplier": -1
+  },
+  {
+    "id": "G2",
+    "text": "Per i reati gravi come omicidio premeditato e violenza sessuale, le pene attuali in Italia sono troppo miti.",
+    "pro": "La certezza e la severità della pena hanno un effetto deterrente; molte vittime percepiscono le condanne attuali come inadeguate rispetto al danno subito. La prescrizione e gli sconti di pena spesso vanificano le sentenze.",
+    "con": "L'inasprimento delle pene non riduce i reati: i paesi con le pene più severe non sono i più sicuri. Il problema italiano è la lentezza del processo, non la mitezza delle condanne.",
+    "axis": "giustizia",
+    "multiplier": 1
+  },
+  {
+    "id": "G3",
+    "text": "Chi ha scontato la propria pena dovrebbe poter rientrare pienamente nella vita civile, incluso il diritto di voto e l'accesso a cariche pubbliche.",
+    "pro": "La pena è un debito verso la società: una volta pagato, la persona deve poter ricominciare senza stigma permanente. Escludere gli ex detenuti dalla vita civile alimenta emarginazione e recidiva.",
+    "con": "Chi ha commesso reati gravi ha dimostrato di non rispettare il patto sociale: alcune conseguenze civili prolungate sono giustificate, specialmente per reati contro le istituzioni.",
+    "axis": "giustizia",
+    "multiplier": -1
+  },
+  {
+    "id": "G4",
+    "text": "Il reato di consumo e piccolo spaccio di droghe dovrebbe essere trattato principalmente come un problema sanitario, non penale.",
+    "pro": "Criminalizzare i consumatori non riduce il consumo ma li espone a condanne che distruggono vite già fragili. Il modello portoghese mostra che trattare le dipendenze come malattie riduce i danni sociali.",
+    "con": "Depenalizzare lo spaccio — anche piccolo — rischia di far percepire il traffico di droga come tollerato. La distinzione tra consumo e spaccio è nella pratica quasi impossibile da applicare.",
+    "axis": "giustizia",
+    "multiplier": -1
+  },
+  {
+    "id": "G5",
+    "text": "L'ergastolo ostativo — che impedisce ai condannati per mafia o terrorismo di accedere a benefici penitenziari senza collaborare con la giustizia — è uno strumento necessario.",
+    "pro": "Per i reati di mafia e terrorismo, i benefici penitenziari non devono essere concessi a chi rimane legato alle organizzazioni criminali: la collaborazione è l'unica prova reale di rottura. È uno strumento fondamentale per lo Stato nella lotta alla criminalità organizzata.",
+    "con": "La Corte Europea dei Diritti dell'Uomo ha più volte rilevato profili di incompatibilità con il divieto di trattamenti inumani. Una pena senza possibilità di redenzione contraddice il principio rieducativo della Costituzione.",
+    "axis": "giustizia",
+    "multiplier": 1
+  },
+  {
+    "id": "Ec1",
+    "text": "L'Italia dovrebbe puntare sull'energia nucleare di nuova generazione come parte del mix energetico nazionale.",
+    "pro": "Il nucleare di quarta generazione è sicuro, produce pochissime emissioni e garantisce indipendenza energetica. Senza di esso è matematicamente difficile raggiungere la neutralità carbonica mantenendo industria e consumi attuali.",
+    "con": "I tempi di costruzione (10-15 anni) e i costi sono enormi; nel frattempo le rinnovabili crescono più velocemente e costano sempre meno. Il problema delle scorie nucleari non ha ancora soluzione definitiva.",
+    "axis": "ambiente",
+    "multiplier": 1
+  },
+  {
+    "id": "Ec2",
+    "text": "L'Unione Europea ha ragione a voler vietare la vendita di auto con motore a combustione entro il 2035.",
+    "pro": "Il trasporto su strada è una delle principali fonti di CO₂: una scadenza certa stimola gli investimenti industriali nella direzione giusta. L'Europa rischia di perdere la competizione globale sull'auto elettrica se non si adatta.",
+    "con": "Il 2035 è troppo vicino per adattare l'intera filiera industriale, con gravi conseguenze per l'occupazione in paesi come l'Italia. L'auto elettrica non è accessibile a tutti i redditi e ha problemi di approvvigionamento di litio e cobalto.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec3",
+    "text": "Le attività economiche dovrebbero essere tassate in base alle emissioni di CO₂ che producono (carbon tax).",
+    "pro": "Mettere un prezzo sulle emissioni è il modo più efficiente economicamente per ridurle: chi inquina paga, chi innova viene premiato. È sostenuta da economisti di ogni orientamento, destra e sinistra.",
+    "con": "Colpisce in modo sproporzionato le imprese e i lavoratori in settori tradizionali, già in difficoltà. Rischia di spostare produzioni inquinanti in paesi senza regole, senza ridurre le emissioni globali.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec4",
+    "text": "La tutela dell'ambiente dovrebbe avere priorità sullo sviluppo economico anche quando ciò significa rinunciare a posti di lavoro.",
+    "pro": "I danni economici del cambiamento climatico (siccità, alluvioni, perdita di biodiversità) sono enormi e irreversibili: pagare ora è molto meno costoso che pagare dopo. Le generazioni future non possono difendere i propri interessi nelle urne.",
+    "con": "Chi lavora in settori a rischio chiusura non può aspettare la transizione verde: il disagio sociale immediato è reale e politicamente insostenibile. Crescita e sostenibilità devono procedere insieme, non in alternativa.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec5",
+    "text": "I sussidi statali alle fonti energetiche fossili (gas, carbone, petrolio) dovrebbero essere eliminati immediatamente.",
+    "pro": "Sussidiare i combustibili fossili significa usare soldi pubblici per accelerare il cambiamento climatico; a livello globale ammontano a migliaia di miliardi l'anno. Eliminarli renderebbe le rinnovabili competitive senza bisogno di altri incentivi.",
+    "con": "Un'eliminazione immediata causerebbe aumenti bruschi dei prezzi energetici, con impatti pesanti su famiglie povere e industrie energivore. Una transizione graduale è più sostenibile socialmente e politicamente.",
+    "axis": "ambiente",
+    "multiplier": -1
+  }
+]

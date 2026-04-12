@@ -1,0 +1,381 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 40px 20px; /* Aggiunge spazio sopra e sotto per poter scorrere bene */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh; /* "min-height" invece di "height" permette alla pagina di allungarsi */
+    box-sizing: border-box;
+}
+
+#app-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    height: fit-content; /* Si adatta perfettamente al contenuto */
+}
+
+.screen {
+    display: none; /* Nasconde tutte le schermate di default */
+}
+
+.screen.active {
+    display: block; /* Mostra solo la schermata attiva */
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Aggiungi queste classi al tuo style.css esistente */
+
+#arguments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+.arg-box {
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #ccc;
+}
+
+.arg-box.pro {
+    background-color: #e8f5e9;
+    border-left-color: #4caf50; /* Verde */
+}
+
+.arg-box.con {
+    background-color: #ffebee;
+    border-left-color: #f44336; /* Rosso */
+}
+
+/* Stile per il pulsante selezionato */
+.option-btn.selected {
+    background-color: #2196f3; /* Blu */
+    color: white;
+    border-color: #1976d2;
+    font-weight: bold;
+}
+
+/* Layout controlli di navigazione */
+.nav-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.nav-controls button {
+    width: auto;
+    padding: 10px 20px;
+    margin: 0;
+}
+
+.nav-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.q-counter {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Stili per i risultati grafici */
+.compass-container {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#compass-canvas {
+    border: 2px solid #333;
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+}
+
+.compass-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.compass-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.compass-label-y {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.compass-label-x {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #333;
+    width: 80px; /* Larghezza fissa per mantenere il canvas centrato */
+}
+
+.compass-label-x.right-align { text-align: right; padding-right: 15px; }
+.compass-label-x.left-align { text-align: left; padding-left: 15px; }
+
+#compass-canvas {
+    border: 2px solid #333;
+    border-radius: 5px;
+}
+
+#extra-axes-container {
+    margin: 30px 0;
+    text-align: left;
+}
+
+.axis-row {
+    margin-bottom: 20px;
+}
+
+.axis-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Contenitore flessibile per icone e barra */
+.axis-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spazio tra icone e barra */
+}
+
+/* Le icone ai lati */
+.axis-icon {
+    font-size: 1.5em; /* Grandezza dell'icona */
+    line-height: 1;
+    display: inline-block;
+    min-width: 30px; /* Mantiene la barra centrata anche se le icone hanno larghezze diverse */
+    text-align: center;
+}
+
+/* Modifica la vecchia regola .bar-background aggiungendo flex-grow */
+.bar-background {
+    position: relative;
+    flex-grow: 1; /* Permette alla barra di occupare tutto lo spazio in mezzo */
+    height: 20px;
+    border-radius: 10px;
+    /* overflow: hidden; */
+}
+
+/* La linea dello zero al centro */
+.bar-background::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #333;
+    z-index: 10;
+}
+
+/* L'indicatore dell'utente */
+.bar-indicator {
+    position: absolute;
+    top: -5px; 
+    width: 6px;
+    height: 30px;
+    background-color: #000;
+    border-radius: 3px;
+    border: 2px solid #fff; /* Bordo bianco per contrasto sui gradienti */
+    box-shadow: 0 0 5px rgba(0,0,0,0.5); /* Ombreggiatura per effetto 3D */
+    z-index: 20;
+    transform: translateX(-50%); 
+    transition: left 1s ease-out;
+}
+
+.axis-icon {
+    font-size: 1.3em;
+    color: #555;
+    min-width: 65px; /* Aumentato da 30px a 65px per farci stare comodamente due icone */
+    text-align: center;
+    white-space: nowrap; /* Impedisce alle due icone di andare a capo */
+}
+
+.party-result {
+    background-color: #ffffff; /* Sfondo bianco pulito */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+    border: 1px solid #dddddd; /* Bordino grigio leggero */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#closest-party-container {
+    display: flex;
+    flex-direction: column; /* Dispone logo e nome in verticale */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#closest-party-logo {
+    width: 180px;            /* Dimensione molto più grande */
+    height: 180px;           /* Manteniamo le proporzioni quadrate */
+    object-fit: contain;     /* Evita che il logo si deformi se non è perfettamente quadrato */
+    background-color: #fff;  /* Sfondo bianco interno per loghi trasparenti */
+    border-radius: 50%;      /* Lo rende un grande cerchio */
+    border: 4px solid #f0f0f0; /* Un bordo grigio chiaro elegante */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Ombra profonda per dare tridimensionalità */
+    margin-bottom: 15px;     /* Spazio extra rispetto al nome sotto */
+    padding: 10px;           /* Spazio tra il bordo e il logo stesso */
+    transition: transform 0.3s ease; /* Effetto fluido */
+}
+
+/* Effetto al passaggio del mouse (opzionale) */
+#closest-party-logo:hover {
+    transform: scale(1.05); /* Si ingrandisce leggermente quando ci passi sopra */
+}
+
+/* Assicuriamoci che il nome del partito sia proporzionato alla nuova dimensione del logo */
+#closest-party {
+    font-size: 2.2em;        /* Testo più grande e leggibile */
+    font-weight: 800;        /* Extra bold */
+    color: #222;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+/* ---- LOGHI SUL COMPASS 2D ---- */
+.party-logo-compass {
+    position: absolute;
+    width: 26px; /* Dimensione loghi sulla bussola */
+    height: 26px;
+    transform: translate(-50%, -50%); /* Li centra perfettamente sulle coordinate */
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    z-index: 10;
+    transition: transform 0.2s; /* Effetto zoom al passaggio del mouse */
+}
+.party-logo-compass:hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    z-index: 30; /* Passa in primissimo piano se ci passi sopra */
+}
+
+/* ---- PUNTO DELL'UTENTE SUL COMPASS 2D ---- */
+.user-dot-compass {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 6px rgba(0,0,0,0.6);
+    z-index: 20; /* Sopra ai partiti (10), sotto agli hover (30) */
+}
+
+/* ---- LOGHI SULLE BARRE AGGIUNTIVE ---- */
+.party-logo-axis {
+    position: absolute;
+    top: 50%; /* Centra il punto medio del logo sulla barra */
+    transform: translate(-50%, -50%); /* Centra perfettamente l'immagine */
+    width: 32px;  /* Aumentato per leggibilità */
+    height: 32px; /* Aumentato per leggibilità */
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
+    z-index: 10;
+    background-color: white; /* Utile se i loghi sono trasparenti */
+    transition: transform 0.2s, z-index 0.2s;
+    opacity: 0.8;
+}
+
+/* Effetto ingrandimento quando ci passi sopra col mouse */
+.party-logo-axis:hover {
+    transform: translate(-50%, -50%) scale(1.4);
+    z-index: 50; 
+    opacity: 1;
+}
+
+/* Assicurati che l'indicatore utente che avevi già nel CSS abbia z-index: 20! */
+.bar-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 40px; /* Aumentata l'altezza per coprire i loghi grandi */
+    background-color: #000;
+    border-radius: 3px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    z-index: 100; /* Valore molto alto per stare sempre sopra a tutto */
+    transition: left 1s ease-out;
+}
+
+/* Colori Likert personalizzati */
+/* Fortemente d'accordo */
+.option-btn[onclick*="selectAnswer(2"] { border-left: 8px solid #2e7d32; }
+.option-btn[onclick*="selectAnswer(2"]:hover { background-color: #e8f5e9; }
+.option-btn[onclick*="selectAnswer(2"].selected { background-color: #2e7d32; color: white; }
+
+/* D'accordo */
+.option-btn[onclick*="selectAnswer(1"] { border-left: 8px solid #81c784; }
+.option-btn[onclick*="selectAnswer(1"]:hover { background-color: #f1f8e9; }
+.option-btn[onclick*="selectAnswer(1"].selected { background-color: #81c784; color: white; }
+
+/* Neutro */
+.option-btn[onclick*="selectAnswer(0"] { border-left: 8px solid #9e9e9e; }
+.option-btn[onclick*="selectAnswer(0"]:hover { background-color: #f5f5f5; }
+.option-btn[onclick*="selectAnswer(0"].selected { background-color: #9e9e9e; color: white; }
+
+/* In disaccordo */
+.option-btn[onclick*="selectAnswer(-1"] { border-left: 8px solid #e57373; }
+.option-btn[onclick*="selectAnswer(-1"]:hover { background-color: #fffbfa; }
+.option-btn[onclick*="selectAnswer(-1"].selected { background-color: #e57373; color: white; }
+
+/* Fortemente in disaccordo */
+.option-btn[onclick*="selectAnswer(-2"] { border-left: 8px solid #c62828; }
+.option-btn[onclick*="selectAnswer(-2"]:hover { background-color: #ffebee; }
+.option-btn[onclick*="selectAnswer(-2"].selected { background-color: #c62828; color: white; }
+
+/* Reset stile base per accomodare il bordo colorato */
+.option-btn {
+    text-align: left; /* Allinea il testo a sinistra per un look più pulito con la barra colorata */
+    padding-left: 20px;
+    transition: all 0.2s ease;
+}

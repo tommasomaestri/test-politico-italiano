@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Politico Italiano</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+</head>
+<body>
+
+    <div id="app-container">
+    
+    <div id="start-screen" class="screen active">
+        <h1>Scopri la tua posizione politica</h1>
+        <p>Rispondi a 30 domande per scoprire dove ti collochi nel panorama italiano.</p>
+        <button id="start-btn" onclick="startTest()" disabled>Caricamento domande...</button>
+    </div>
+
+    <div id="quiz-screen" class="screen">
+        <h2 id="question-text">Testo della domanda...</h2>
+        
+        <div id="arguments-container">
+            <div class="arg-box pro">
+                <strong>Pro:</strong> <span id="arg-pro-text"></span>
+            </div>
+            <div class="arg-box con">
+                <strong>Contro:</strong> <span id="arg-con-text"></span>
+            </div>
+        </div>
+
+        <div id="options-container">
+            <button class="option-btn" onclick="selectAnswer(2, this)">Fortemente d'accordo</button>
+            <button class="option-btn" onclick="selectAnswer(1, this)">D'accordo</button>
+            <button class="option-btn" onclick="selectAnswer(0, this)">Neutro / Non so</button>
+            <button class="option-btn" onclick="selectAnswer(-1, this)">In disaccordo</button>
+            <button class="option-btn" onclick="selectAnswer(-2, this)">Fortemente in disaccordo</button>
+        </div>
+        
+        <div class="nav-controls">
+            <button id="btn-prev" onclick="goPrevious()">Indietro</button>
+            <span class="q-counter"><span id="current-q-num">1</span> / <span id="total-q-num">30</span></span>
+            <button id="btn-next" onclick="goNext()">Avanti</button>
+        </div>
+    </div>
+
+    <div id="results-screen" class="screen">
+        <h2>I Tuoi Risultati</h2>
+        
+        <div class="compass-container">
+            <h3>Bussola Politica</h3>
+            <div class="compass-layout">
+                <div class="compass-label-y">AUTORITARIO</div>
+                <div class="compass-row">
+                    <div class="compass-label-x right-align">SINISTRA</div>
+                    
+                    <div id="compass-overlay-container" style="position: relative; display: inline-block;">
+                        <canvas id="compass-canvas" width="300" height="300"></canvas>
+                        <div id="compass-overlay"></div> </div>
+
+                    <div class="compass-label-x left-align">DESTRA</div>
+                </div>
+                <div class="compass-label-y">LIBERTARIO</div>
+            </div>
+        </div>
+
+        <div id="extra-axes-container">
+            <h3>Altri assi valoriali</h3>
+        </div>
+
+        <div class="party-result">
+            <h3>Partito più affine:</h3>
+            <div id="closest-party-container">
+                <img id="closest-party-logo" src="" alt="Logo">
+                <div id="closest-party"></div>
+            </div>
+        </div>
+        
+        <button onclick="restartTest()">Rifai il Test</button>
+    </div>
+
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

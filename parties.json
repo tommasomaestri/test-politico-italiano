@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Fratelli d'Italia",
+    "logo": "img/fdi.svg",
+    "axes": {
+      "economia": 5.5,
+      "autorita": 7.5,
+      "identita": 8.5,
+      "nazione": 7.5,
+      "giustizia": 7.5,
+      "ambiente": 5.5
+    }
+  },
+  {
+    "name": "Lega",
+    "logo": "img/lega.png",
+    "axes": {
+      "economia": 6.0,
+      "autorita": 8.0,
+      "identita": 7.5,
+      "nazione": 8.5,
+      "giustizia": 8.0,
+      "ambiente": 6.5
+    }
+  },
+  {
+    "name": "Forza Italia",
+    "logo": "img/fi.png",
+    "axes": {
+      "economia": 7.5,
+      "autorita": 4.0,
+      "identita": 4.0,
+      "nazione": 1.5,
+      "giustizia": 3.0,
+      "ambiente": 4.0
+    }
+  },
+  {
+    "name": "Noi Moderati",
+    "logo": "img/nm.png",
+    "axes": {
+      "economia": 6.0,
+      "autorita": 4.0,
+      "identita": 4.5,
+      "nazione": 2.5,
+      "giustizia": 4.0,
+      "ambiente": 3.0
+    }
+  },
+  {
+    "name": "Azione",
+    "logo": "img/azione.png",
+    "axes": {
+      "economia": 5.5,
+      "autorita": 1.5,
+      "identita": -2.5,
+      "nazione": -4.5,
+      "giustizia": 1.5,
+      "ambiente": 1.0
+    }
+  },
+  {
+    "name": "Italia Viva",
+    "logo": "img/iv.svg",
+    "axes": {
+      "economia": 4.5,
+      "autorita": 1.0,
+      "identita": -2.5,
+      "nazione": -4.5,
+      "giustizia": 1.0,
+      "ambiente": 1.0
+    }
+  },
+  {
+    "name": "+Europa",
+    "logo": "img/+e.jpg",
+    "axes": {
+      "economia": 4.5,
+      "autorita": -4.5,
+      "identita": -8.0,
+      "nazione": -9.0,
+      "giustizia": -6.0,
+      "ambiente": -5.5
+    }
+  },
+  {
+    "name": "Partito Democratico",
+    "logo": "img/pd.png",
+    "axes": {
+      "economia": -3.5,
+      "autorita": -2.0,
+      "identita": -7.0,
+      "nazione": -6.0,
+      "giustizia": -4.0,
+      "ambiente": -5.5
+    }
+  },
+  {
+    "name": "Movimento 5 Stelle",
+    "logo": "img/m5s.png",
+    "axes": {
+      "economia": -6.0,
+      "autorita": -1.5,
+      "identita": -5.0,
+      "nazione": -2.5,
+      "giustizia": -1.0,
+      "ambiente": -7.0
+    }
+  },
+  {
+    "name": "Alleanza Verdi-Sinistra",
+    "logo": "img/avs.png",
+    "axes": {
+      "economia": -7.5,
+      "autorita": -5,
+      "identita": -9.0,
+      "nazione": -7.0,
+      "giustizia": -7.5,
+      "ambiente": -9.5
+    }
+  },
+  {
+    "name": "Potere al Popolo",
+    "logo": "img/pap.png",
+    "axes": {
+      "economia": -10.0,
+      "autorita": -6.5,
+      "identita": -8.5,
+      "nazione": -4.5,
+      "giustizia": -8.5,
+      "ambiente": -8.5
+    }
+  },
+  {
+    "name": "Futuro Nazionale",
+    "logo": "img/fn.svg",
+    "axes": {
+      "economia": 4.5,
+      "autorita": 9.0,
+      "identita": 10.0,
+      "nazione": 10.0,
+      "giustizia": 9.0,
+      "ambiente": 6.5
+    }
+  }
+]
