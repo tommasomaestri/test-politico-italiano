@@ -16,9 +16,14 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 600px;
+    max-width: 750px; /* PRIMA ERA 600px. Questo allargherà gli assi extra e rimpicciolirà i margini! */
     text-align: center;
-    height: fit-content; /* Si adatta perfettamente al contenuto */
+    height: fit-content;
+}
+
+#results-screen {
+    padding-top: 40px; /* Abbassa il titolo "I Tuoi Risultati" dal bordo superiore dell'immagine */
+    padding-bottom: 10px; /* Riduciamo lo spazio morto in basso */
 }
 
 .screen {
@@ -163,32 +168,38 @@ button:hover {
 }
 
 .axis-row {
-    margin-bottom: 20px;
+    margin-bottom: 35px; /* PRIMA ERA 25px */
 }
 
 .axis-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 0.85em;
+    font-size: 0.95em;
     font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
+    color: #333;
+    margin-bottom: 10px; /* Più spazio per i loghi che sbordano */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 95px;
 }
 
-/* Contenitore flessibile per icone e barra */
 .axis-bar-container {
     display: flex;
     align-items: center;
-    gap: 10px; /* Spazio tra icone e barra */
+    justify-content: center; 
+    gap: 15px; /* PRIMA ERA 10px */
 }
 
 /* Le icone ai lati */
 .axis-icon {
-    font-size: 1.5em; /* Grandezza dell'icona */
-    line-height: 1;
-    display: inline-block;
-    min-width: 30px; /* Mantiene la barra centrata anche se le icone hanno larghezze diverse */
+    font-size: 1.7em; /* PRIMA ERA 1.3em */
+    color: #444;
+    min-width: 80px; /* PRIMA ERA 65px */
     text-align: center;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Modifica la vecchia regola .bar-background aggiungendo flex-grow */
@@ -217,12 +228,12 @@ button:hover {
     position: absolute;
     top: -5px; 
     width: 6px;
-    height: 30px;
+    height: 44px;
     background-color: #000;
     border-radius: 3px;
     border: 2px solid #fff; /* Bordo bianco per contrasto sui gradienti */
     box-shadow: 0 0 5px rgba(0,0,0,0.5); /* Ombreggiatura per effetto 3D */
-    z-index: 20;
+    z-index: 100;
     transform: translateX(-50%); 
     transition: left 1s ease-out;
 }
@@ -378,4 +389,124 @@ button:hover {
     text-align: left; /* Allinea il testo a sinistra per un look più pulito con la barra colorata */
     padding-left: 20px;
     transition: all 0.2s ease;
+}
+
+.results-grid {
+    display: flex;
+    gap: 15px; /* Spazio ridotto tra le due colonne */
+    margin: 20px 0; /* Spazio ridotto sopra e sotto l'intera griglia */
+}
+
+.results-column {
+    flex: 1;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.party-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.party-card {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.party-card.winner .result-logo {
+    width: 100px; /* Ridotto da 120px */
+    height: 100px;
+}
+
+.party-card.winner .party-name {
+    font-size: 1.25em; /* Leggermente più piccolo */
+}
+
+.result-logo {
+    width: 48px; /* Ridotto da 60px */
+    height: 48px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 5px;
+}
+
+.party-name {
+    font-size: 0.9em; /* Testo più compatto */
+    font-weight: bold;
+}
+
+.match-percent {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.party-card.opposition .result-logo {
+    border: 2px solid #c62828;
+    opacity: 0.8;
+}
+
+/* Responsive per mobile */
+@media (max-width: 600px) {
+    .results-grid { flex-direction: column; }
+}
+
+/* Stile per i punteggi numerici */
+.numeric-scores-details {
+    margin: 20px 0;
+    cursor: pointer;
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.numeric-scores-details summary {
+    font-weight: bold;
+    color: #555;
+}
+
+#numeric-scores-container {
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.score-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+    font-family: monospace;
+}
+
+.score-val {
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+/* Stile per il pulsante Social */
+.share-btn {
+    background-color: #6200ee; /* Viola stile Instagram/TikTok */
+    color: white;
+    margin-top: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(98, 0, 238, 0.3);
+    transition: transform 0.2s;
+}
+
+.share-btn:hover {
+    transform: scale(1.05);
+    background-color: #3700b3;
 }
