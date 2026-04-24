@@ -3,10 +3,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     margin: 0;
-    padding: 40px 20px; /* Aggiunge spazio sopra e sotto per poter scorrere bene */
+    padding: 40px 20px; 
     display: flex;
     justify-content: center;
-    min-height: 100vh; /* "min-height" invece di "height" permette alla pagina di allungarsi */
+    min-height: 100vh;
     box-sizing: border-box;
 }
 
@@ -16,22 +16,22 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 750px; /* PRIMA ERA 600px. Questo allargherà gli assi extra e rimpicciolirà i margini! */
+    max-width: 750px; /* PRIMA ERA 600px */
     text-align: center;
     height: fit-content;
 }
 
 #results-screen {
-    padding-top: 40px; /* Abbassa il titolo "I Tuoi Risultati" dal bordo superiore dell'immagine */
-    padding-bottom: 10px; /* Riduciamo lo spazio morto in basso */
+    padding-top: 40px; 
+    padding-bottom: 10px; 
 }
 
 .screen {
-    display: none; /* Nasconde tutte le schermate di default */
+    display: none;
 }
 
 .screen.active {
-    display: block; /* Mostra solo la schermata attiva */
+    display: block; 
 }
 
 button {
@@ -51,8 +51,6 @@ button:hover {
     background-color: #e0e0e0;
 }
 
-/* Aggiungi queste classi al tuo style.css esistente */
-
 #arguments-container {
     display: flex;
     flex-direction: column;
@@ -70,23 +68,21 @@ button:hover {
 
 .arg-box.pro {
     background-color: #e8f5e9;
-    border-left-color: #4caf50; /* Verde */
+    border-left-color: #4caf50; 
 }
 
 .arg-box.con {
     background-color: #ffebee;
-    border-left-color: #f44336; /* Rosso */
+    border-left-color: #f44336; 
 }
 
-/* Stile per il pulsante selezionato */
 .option-btn.selected {
-    background-color: #2196f3; /* Blu */
+    background-color: #2196f3; 
     color: white;
     border-color: #1976d2;
     font-weight: bold;
 }
 
-/* Layout controlli di navigazione */
 .nav-controls {
     display: flex;
     justify-content: space-between;
@@ -112,7 +108,6 @@ button:hover {
     color: #555;
 }
 
-/* Stili per i risultati grafici */
 .compass-container {
     margin: 20px auto;
     text-align: center;
@@ -151,7 +146,7 @@ button:hover {
     font-weight: bold;
     font-size: 0.9em;
     color: #333;
-    width: 80px; /* Larghezza fissa per mantenere il canvas centrato */
+    width: 80px; 
 }
 
 .compass-label-x.right-align { text-align: right; padding-right: 15px; }
@@ -190,7 +185,6 @@ button:hover {
     gap: 15px; /* PRIMA ERA 10px */
 }
 
-/* Le icone ai lati */
 .axis-icon {
     font-size: 1.7em; /* PRIMA ERA 1.3em */
     color: #444;
@@ -202,16 +196,14 @@ button:hover {
     justify-content: center;
 }
 
-/* Modifica la vecchia regola .bar-background aggiungendo flex-grow */
 .bar-background {
     position: relative;
-    flex-grow: 1; /* Permette alla barra di occupare tutto lo spazio in mezzo */
+    flex-grow: 1; 
     height: 20px;
     border-radius: 10px;
     /* overflow: hidden; */
 }
 
-/* La linea dello zero al centro */
 .bar-background::after {
     content: '';
     position: absolute;
@@ -223,7 +215,6 @@ button:hover {
     z-index: 10;
 }
 
-/* L'indicatore dell'utente */
 .bar-indicator {
     position: absolute;
     top: -5px; 
@@ -231,8 +222,8 @@ button:hover {
     height: 44px;
     background-color: #000;
     border-radius: 3px;
-    border: 2px solid #fff; /* Bordo bianco per contrasto sui gradienti */
-    box-shadow: 0 0 5px rgba(0,0,0,0.5); /* Ombreggiatura per effetto 3D */
+    border: 2px solid #fff; 
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
     z-index: 100;
     transform: translateX(-50%); 
     transition: left 1s ease-out;
@@ -241,73 +232,69 @@ button:hover {
 .axis-icon {
     font-size: 1.3em;
     color: #555;
-    min-width: 65px; /* Aumentato da 30px a 65px per farci stare comodamente due icone */
+    min-width: 65px; 
     text-align: center;
-    white-space: nowrap; /* Impedisce alle due icone di andare a capo */
+    white-space: nowrap; 
 }
 
 .party-result {
-    background-color: #ffffff; /* Sfondo bianco pulito */
+    background-color: #ffffff; 
     padding: 20px;
     border-radius: 10px;
     margin: 25px 0;
-    border: 1px solid #dddddd; /* Bordino grigio leggero */
+    border: 1px solid #dddddd; 
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 #closest-party-container {
     display: flex;
-    flex-direction: column; /* Dispone logo e nome in verticale */
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
 #closest-party-logo {
-    width: 180px;            /* Dimensione molto più grande */
-    height: 180px;           /* Manteniamo le proporzioni quadrate */
-    object-fit: contain;     /* Evita che il logo si deformi se non è perfettamente quadrato */
-    background-color: #fff;  /* Sfondo bianco interno per loghi trasparenti */
-    border-radius: 50%;      /* Lo rende un grande cerchio */
-    border: 4px solid #f0f0f0; /* Un bordo grigio chiaro elegante */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Ombra profonda per dare tridimensionalità */
-    margin-bottom: 15px;     /* Spazio extra rispetto al nome sotto */
-    padding: 10px;           /* Spazio tra il bordo e il logo stesso */
-    transition: transform 0.3s ease; /* Effetto fluido */
+    width: 180px;            
+    height: 180px;           
+    object-fit: contain;     
+    background-color: #fff;  
+    border-radius: 50%;  
+    border: 4px solid #f0f0f0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+    margin-bottom: 15px;
+    padding: 10px;
+    transition: transform 0.3s ease;
 }
 
-/* Effetto al passaggio del mouse (opzionale) */
 #closest-party-logo:hover {
-    transform: scale(1.05); /* Si ingrandisce leggermente quando ci passi sopra */
+    transform: scale(1.05); 
 }
 
-/* Assicuriamoci che il nome del partito sia proporzionato alla nuova dimensione del logo */
 #closest-party {
-    font-size: 2.2em;        /* Testo più grande e leggibile */
-    font-weight: 800;        /* Extra bold */
+    font-size: 2.2em;
+    font-weight: 800;
     color: #222;
     text-align: center;
     letter-spacing: -0.5px;
 }
 
-/* ---- LOGHI SUL COMPASS 2D ---- */
 .party-logo-compass {
     position: absolute;
-    width: 26px; /* Dimensione loghi sulla bussola */
+    width: 26px; 
     height: 26px;
-    transform: translate(-50%, -50%); /* Li centra perfettamente sulle coordinate */
+    transform: translate(-50%, -50%);
     border-radius: 50%;
     border: 2px solid white;
     box-shadow: 0 0 4px rgba(0,0,0,0.4);
     z-index: 10;
-    transition: transform 0.2s; /* Effetto zoom al passaggio del mouse */
+    transition: transform 0.2s; 
 }
 .party-logo-compass:hover {
     transform: translate(-50%, -50%) scale(1.5);
-    z-index: 30; /* Passa in primissimo piano se ci passi sopra */
+    z-index: 30; 
 }
 
-/* ---- PUNTO DELL'UTENTE SUL COMPASS 2D ---- */
 .user-dot-compass {
     position: absolute;
     width: 16px;
@@ -317,48 +304,45 @@ button:hover {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 6px rgba(0,0,0,0.6);
-    z-index: 20; /* Sopra ai partiti (10), sotto agli hover (30) */
+    z-index: 20; 
 }
 
-/* ---- LOGHI SULLE BARRE AGGIUNTIVE ---- */
 .party-logo-axis {
     position: absolute;
-    top: 50%; /* Centra il punto medio del logo sulla barra */
-    transform: translate(-50%, -50%); /* Centra perfettamente l'immagine */
-    width: 32px;  /* Aumentato per leggibilità */
-    height: 32px; /* Aumentato per leggibilità */
+    top: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 32px;  
+    height: 32px; 
     border-radius: 50%;
     border: 2px solid white;
     box-shadow: 0 0 4px rgba(0,0,0,0.3);
     z-index: 10;
-    background-color: white; /* Utile se i loghi sono trasparenti */
+    background-color: white; 
     transition: transform 0.2s, z-index 0.2s;
     opacity: 0.8;
 }
 
-/* Effetto ingrandimento quando ci passi sopra col mouse */
 .party-logo-axis:hover {
     transform: translate(-50%, -50%) scale(1.4);
     z-index: 50; 
     opacity: 1;
 }
 
-/* Assicurati che l'indicatore utente che avevi già nel CSS abbia z-index: 20! */
 .bar-indicator {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 6px;
-    height: 40px; /* Aumentata l'altezza per coprire i loghi grandi */
+    height: 40px; 
     background-color: #000;
     border-radius: 3px;
     border: 2px solid #fff;
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
-    z-index: 100; /* Valore molto alto per stare sempre sopra a tutto */
+    z-index: 100; 
     transition: left 1s ease-out;
 }
 
-/* Colori Likert personalizzati */
+/* Colori Likert */
 /* Fortemente d'accordo */
 .option-btn[onclick*="selectAnswer(2"] { border-left: 8px solid #2e7d32; }
 .option-btn[onclick*="selectAnswer(2"]:hover { background-color: #e8f5e9; }
@@ -384,17 +368,16 @@ button:hover {
 .option-btn[onclick*="selectAnswer(-2"]:hover { background-color: #ffebee; }
 .option-btn[onclick*="selectAnswer(-2"].selected { background-color: #c62828; color: white; }
 
-/* Reset stile base per accomodare il bordo colorato */
 .option-btn {
-    text-align: left; /* Allinea il testo a sinistra per un look più pulito con la barra colorata */
+    text-align: left; 
     padding-left: 20px;
     transition: all 0.2s ease;
 }
 
 .results-grid {
     display: flex;
-    gap: 15px; /* Spazio ridotto tra le due colonne */
-    margin: 20px 0; /* Spazio ridotto sopra e sotto l'intera griglia */
+    gap: 15px; 
+    margin: 20px 0; 
 }
 
 .results-column {
@@ -420,16 +403,16 @@ button:hover {
 }
 
 .party-card.winner .result-logo {
-    width: 100px; /* Ridotto da 120px */
+    width: 100px; 
     height: 100px;
 }
 
 .party-card.winner .party-name {
-    font-size: 1.25em; /* Leggermente più piccolo */
+    font-size: 1.25em; 
 }
 
 .result-logo {
-    width: 48px; /* Ridotto da 60px */
+    width: 48px; 
     height: 48px;
     border-radius: 50%;
     object-fit: contain;
@@ -439,7 +422,7 @@ button:hover {
 }
 
 .party-name {
-    font-size: 0.9em; /* Testo più compatto */
+    font-size: 0.9em; 
     font-weight: bold;
 }
 
@@ -453,12 +436,10 @@ button:hover {
     opacity: 0.8;
 }
 
-/* Responsive per mobile */
 @media (max-width: 600px) {
     .results-grid { flex-direction: column; }
 }
 
-/* Stile per i punteggi numerici */
 .numeric-scores-details {
     margin: 20px 0;
     cursor: pointer;
@@ -492,9 +473,8 @@ button:hover {
     color: #2e7d32;
 }
 
-/* Stile per il pulsante Social */
 .share-btn {
-    background-color: #6200ee; /* Viola stile Instagram/TikTok */
+    background-color: #6200ee; 
     color: white;
     margin-top: 10px;
     padding: 12px 20px;

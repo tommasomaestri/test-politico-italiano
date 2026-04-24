@@ -1,9 +1,7 @@
-// Variabili globali iniziali (vuote)
 let questions = [];
 let userAnswers = [];
 let currentQuestionIndex = 0;
 
-// Array dei partiti (rimane invariato)
 let parties = [];
 
 function shuffleArray(array) {
@@ -21,7 +19,7 @@ async function initApp() {
       throw new Error(`Errore HTTP! stato: ${partiesRes.status}`);
     parties = await partiesRes.json();
 
-    // 1. Controllo se c'è un salvataggio in memoria
+    // Controllo se c'è un salvataggio in memoria
     const savedState = sessionStorage.getItem("politicalTestState");
 
     if (savedState) {
@@ -30,22 +28,20 @@ async function initApp() {
       userAnswers = state.userAnswers;
       currentQuestionIndex = state.currentQuestionIndex;
 
-      // Se avevi già finito il test, vai direttamente ai risultati!
       if (state.isFinished) {
         calculateResults();
-        return; // Interrompe qui
+        return;
       }
-      // Se eri a metà del quiz, ti riporta alla domanda esatta
       else if (Object.keys(userAnswers).length > 0) {
         document.getElementById("start-screen").classList.remove("active");
         document.getElementById("quiz-screen").classList.add("active");
         document.getElementById("total-q-num").innerText = questions.length;
         showQuestion();
-        return; // Interrompe qui
+        return;
       }
     }
 
-    // 2. Comportamento standard se non c'è nessun salvataggio
+    // Comportamento standard se non c'è nessun salvataggio
 
     const response = await fetch("questions.json");
     if (!response.ok) throw new Error(`Errore HTTP! stato: ${response.status}`);
@@ -64,7 +60,6 @@ async function initApp() {
   }
 }
 
-// Avvia il caricamento appena la pagina HTML è pronta
 window.onload = initApp;
 
 function startTest() {
@@ -118,7 +113,6 @@ function selectAnswer(value, btnElement) {
 function goNext() {
   const q = questions[currentQuestionIndex];
 
-  // Controlla se la domanda corrente ha una risposta
   if (userAnswers[q.id] === undefined) {
     alert("Seleziona una risposta prima di procedere.");
     return;
@@ -141,70 +135,46 @@ function goPrevious() {
   }
 }
 
-// La funzione calculateResults() rimane invariata dal messaggio precedente!
-
-// Calcolo finale
 function calculateResults() {
-  // 1. Inizializza i punteggi
-  let rawScores = {
-    economia: 0,
-    autorita: 0,
-    identita: 0,
-    nazione: 0,
-    giustizia: 0,
-    ambiente: 0,
-  };
+    let rawScores = { economia: 0, autorita: 0, identita: 0, nazione: 0, giustizia: 0, ambiente: 0 };
+    let maxScores = { economia: 0, autorita: 0, identita: 0, nazione: 0, giustizia: 0, ambiente: 0 };
+    
+    // Somma i punteggi dell'utente e calcola il massimo possibile (2 punti a domanda)
+    questions.forEach(q => {
+        if (userAnswers[q.id] !== undefined) {
+            rawScores[q.axis] += userAnswers[q.id];
+        }
+        maxScores[q.axis] += 2; // "Fortemente d'accordo" = 2
+    });
 
-  // 2. Somma i punteggi dalle risposte dell'utente
-  questions.forEach((q) => {
-    if (userAnswers[q.id] !== undefined) {
-      rawScores[q.axis] += userAnswers[q.id];
+    // Normalizza i punteggi su una scala da -100 a +100
+    let normalizedScores = {};
+    for (let axis in rawScores) {
+        let max = maxScores[axis] || 1;
+        normalizedScores[axis] = (rawScores[axis] / max) * 100;
     }
-  });
 
-  // 3. Normalizza i punteggi su una scala da -10 a +10
-  let normalizedScores = {};
-  for (let axis in rawScores) {
-    // Supponendo 5 domande per asse, il max è 10.
-    // Se il numero di domande varia, la formula si adatta.
-    normalizedScores[axis] = Math.max(-10, Math.min(10, rawScores[axis]));
-  }
+    // CALCOLO AFFINITÀ (i pesi rimangono invariati)
+    const weights = { economia: 2.5, autorita: 2.5, identita: 1.0, nazione: 1.0, giustizia: 1.0, ambiente: 1.0 };
 
-  // 4. CALCOLO AFFINITÀ PESATA
-  let bestMatch = null;
-  let minDistance = Infinity;
+    let partyDistances = parties.map(party => {
+        let weightedSumOfSquares = 0;
+        for (let axis in normalizedScores) {
+            let diff = normalizedScores[axis] - party.axes[axis];
+            weightedSumOfSquares += (diff * diff) * (weights[axis] || 1.0);
+        }
+        return {
+            ...party,
+            distance: Math.sqrt(weightedSumOfSquares)
+        };
+    });
 
-  // Configurazione Pesi: Economia e Autorità dominano la scelta
-  const weights = {
-    economia: 2.5,
-    autorita: 2.5,
-    identita: 2.5,
-    nazione: 1.0,
-    giustizia: 0.8,
-    ambiente: 0.8,
-  };
+    partyDistances.sort((a, b) => a.distance - b.distance);
 
-  // Creiamo un array di oggetti che contiene partito e distanza calcolata
-  let partyDistances = parties.map((party) => {
-    let weightedSumOfSquares = 0;
-    for (let axis in normalizedScores) {
-      let diff = normalizedScores[axis] - party.axes[axis];
-      weightedSumOfSquares += diff * diff * (weights[axis] || 1.0);
-    }
-    return {
-      ...party,
-      distance: Math.sqrt(weightedSumOfSquares),
-    };
-  });
+    const top3 = partyDistances.slice(0, 3);
+    const bottom3 = partyDistances.slice(-3).reverse();
 
-  // Ordiniamo i partiti dal più vicino (distanza minore) al più lontano
-  partyDistances.sort((a, b) => a.distance - b.distance);
-
-  // Prendiamo i primi 3 e gli ultimi 3
-  const top3 = partyDistances.slice(0, 3);
-  const bottom3 = partyDistances.slice(-3).reverse(); // Invertiamo per avere il più lontano per primo
-
-  showResults(normalizedScores, top3, bottom3);
+    showResults(normalizedScores, top3, bottom3);
 }
 
 function showResults(scores, top3, bottom3) {
@@ -215,7 +185,7 @@ function showResults(scores, top3, bottom3) {
   drawCompass(scores.economia, scores.autorita);
   drawExtraAxes(scores);
 
-  // Genera l'HTML per i Top 3
+  // html partiti più vicini
   const topContainer = document.getElementById("closest-party-container");
   topContainer.innerHTML = top3
     .map(
@@ -223,13 +193,13 @@ function showResults(scores, top3, bottom3) {
         <div class="party-card ${index === 0 ? "winner" : ""}">
             <img src="${party.logo}" alt="${party.name}" class="result-logo">
             <div class="party-name">${party.name}</div>
-            <div class="match-percent">${Math.round(100 - party.distance)}% affinità</div>
+            <div class="match-percent">${Math.max(0, Math.round(100 - (party.distance / 10)))}% affinità</div>
         </div>
     `,
     )
     .join("");
 
-  // Genera l'HTML per i Bottom 3
+  // html partiti più distanti
   const bottomContainer = document.getElementById("farthest-party-container");
   bottomContainer.innerHTML = bottom3
     .map(
@@ -264,7 +234,7 @@ function drawCompass(userX, userY) {
   const w = canvas.width;
   const h = canvas.height;
 
-  // Disegna solo lo sfondo (i punti li facciamo in HTML)
+  // disegna lo sfondo
   ctx.fillStyle = "#ffcccc";
   ctx.fillRect(0, 0, w / 2, h / 2);
   ctx.fillStyle = "#cce5ff";
@@ -283,26 +253,24 @@ function drawCompass(userX, userY) {
   ctx.stroke();
 
   const overlay = document.getElementById("compass-overlay");
-  overlay.innerHTML = ""; // Pulisci
+  overlay.innerHTML = "";
 
-  // POSIZIONA I LOGHI DEI PARTITI SULLA BUSSOLA
-  parties.forEach((party) => {
-    let px = ((party.axes.economia + 10) / 20) * 100;
-    let py = (1 - (party.axes.autorita + 10) / 20) * 100; // Y invertito
-    overlay.innerHTML += `<img src="${party.logo}" class="party-logo-compass" title="${party.name}" style="left: ${px}%; top: ${py}%;">`;
-  });
+  parties.forEach(party => {
+        // scala centesimale: (valore + 100) / 200
+        let px = ((party.axes.economia + 100) / 200) * 100;
+        let py = (1 - ((party.axes.autorita + 100) / 200)) * 100;
+        overlay.innerHTML += `<img src="${party.logo}" class="party-logo-compass" title="${party.name}" style="left: ${px}%; top: ${py}%;">`;
+    });
 
-  // POSIZIONA L'UTENTE (Viene disegnato DOPO, quindi starà SOPRA)
-  let uX = ((userX + 10) / 20) * 100;
-  let uY = (1 - (userY + 10) / 20) * 100;
-  overlay.innerHTML += `<div class="user-dot-compass" style="left: ${uX}%; top: ${uY}%;"></div>`;
+    let uX = ((userX + 100) / 200) * 100;
+    let uY = (1 - ((userY + 100) / 200)) * 100;
+    overlay.innerHTML += `<div class="user-dot-compass" style="left: ${uX}%; top: ${uY}%;"></div>`;
 }
 
 function drawExtraAxes(scores) {
   const container = document.getElementById("extra-axes-container");
   container.innerHTML = "<h3>Assi Aggiuntivi</h3>";
 
-  // Aggiunto "title" per l'intestazione e "gradient" per i colori a tema
   const axesDef = [
     {
       key: "identita",
@@ -349,13 +317,13 @@ function drawExtraAxes(scores) {
 
   axesDef.forEach((axis) => {
     let score = scores[axis.key];
-    let percentPos = ((score + 10) / 20) * 100;
+    let percentPos = ((score + 100) / 200) * 100;
 
-    // GENERA I LOGHI DEI PARTITI PER QUESTO ASSE
+    // genera i loghi dei partiti sull'asse
     let partyLogosHTML = "";
     parties.forEach((party) => {
       let pScore = party.axes[axis.key];
-      let pPercent = ((pScore + 10) / 20) * 100;
+      let pPercent = ((pScore + 100) / 200) * 100;
       partyLogosHTML += `<img src="${party.logo}" class="party-logo-axis" title="${party.name}" style="left: ${pPercent}%;">`;
     });
 
@@ -384,35 +352,29 @@ function downloadResults() {
     const buttons = document.querySelectorAll('button, .numeric-scores-details');
     const iconsAndFlags = resultsScreen.querySelectorAll('img, svg, .fi');
     
-    // 1. Nascondiamo i bottoni e mostriamo una notifica se vuoi
     buttons.forEach(b => b.style.opacity = '0');
     
-    // TRUCCO PRO: Forziamo il browser a considerare le icone come cariche e CORS
     const imageLoadPromises = Array.from(iconsAndFlags).map(el => {
         if (el.tagName === 'IMG') {
             return new Promise(resolve => {
                 if (el.complete) resolve();
                 el.onload = resolve;
-                el.onerror = resolve; // Procediamo anche se fallisce
-                el.crossOrigin = "Anonymous"; // Fondamentale per le bandiere esterne
+                el.onerror = resolve; 
+                el.crossOrigin = "Anonymous";
             });
         }
-        // Per SVG e FontAwesome .fi non serve aspettare onload, sono parte del DOM
         return Promise.resolve();
     });
 
-    // Aspettiamo che tutte le immagini siano cariche prima di scattare
     Promise.all(imageLoadPromises).then(() => {
-        // Aggiungiamo un leggerissimo ritardo extra per sicurezza (100ms)
         setTimeout(() => {
             html2canvas(resultsScreen, {
-                scale: 2, // Alta qualità
+                scale: 2,
                 backgroundColor: "#f4f4f9", 
                 logging: false,
-                useCORS: true, // Cruciale per Flag Icons CDN
+                useCORS: true,
                 allowTaint: false
             }).then(originalCanvas => {
-                // ... (Magia delle proporzioni 9:16 come avevamo già fatto) ...
                 const targetAspectRatio = 9 / 16;
                 let targetWidth, targetHeight;
                 const originalRatio = originalCanvas.width / originalCanvas.height;
@@ -435,16 +397,16 @@ function downloadResults() {
                 const offsetY = (targetHeight - originalCanvas.height) / 2;
                 ctx.drawImage(originalCanvas, offsetX, offsetY);
 
-                // Scarichiamo l'immagine finale
+                // download immagine
                 const link = document.createElement('a');
                 link.download = 'Mio_Test_Politico_Italia.png';
                 link.href = finalCanvas.toDataURL("image/png");
                 link.click();
                 
-                // 4. Ripristiniamo i bottoni
+                // ripristino bottoni
                 buttons.forEach(b => b.style.opacity = '1');
             });
-        }, 100); // 100ms di attesa extra sono sufficienti
+        }, 100); 
     });
 }
 
@@ -453,7 +415,6 @@ function restartTest() {
   location.reload();
 }
 
-// Funzione per salvare lo stato nella memoria del browser
 function saveState(isFinished = false) {
   const state = {
     questions: questions,
