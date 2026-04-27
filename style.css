@@ -51,6 +51,35 @@ button:hover {
     background-color: #e0e0e0;
 }
 
+.start-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#start-quick-btn {
+    background-color: #2196f3;
+    color: white;
+    border-color: #1976d2;
+    font-weight: bold;
+}
+
+#start-quick-btn:hover {
+    background-color: #1976d2;
+}
+
+#start-advanced-btn {
+    background-color: #9c27b0;
+    color: white;
+    border-color: #7b1fa2;
+    font-weight: bold;
+}
+
+#start-advanced-btn:hover {
+    background-color: #7b1fa2;
+}
+
 #arguments-container {
     display: flex;
     flex-direction: column;
@@ -113,11 +142,43 @@ button:hover {
     text-align: center;
 }
 
+.compass-disclaimer {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 25px;
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    text-align: left;
+    line-height: 1.5;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.compass-disclaimer i {
+    color: #007bff;
+    margin-right: 5px;
+}
+
 #compass-canvas {
     border: 2px solid #333;
     border-radius: 5px;
     max-width: 100%;
     height: auto;
+    display: block; /* Removes bottom inline spacing */
+}
+
+#compass-overlay {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border-radius: 3px;
+    pointer-events: none; /* Let events pass to canvas if needed, though children can have pointer-events */
 }
 
 .compass-layout {
@@ -281,8 +342,8 @@ button:hover {
 
 .party-logo-compass {
     position: absolute;
-    width: 26px; 
-    height: 26px;
+    width: 36px; 
+    height: 36px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     border: 2px solid white;
@@ -295,10 +356,101 @@ button:hover {
     z-index: 30; 
 }
 
+.ideology-area-compass {
+    position: absolute;
+    box-sizing: border-box;
+    display: none; /* Nascoste di default */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    z-index: 5; /* Sotto ai partiti e al pallino utente, ma sopra lo sfondo */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ideology-area-compass.active {
+    display: flex; /* Uso flex per centrare il testo */
+}
+
+.ideology-area-label {
+    font-size: 0.5em;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(255,255,255,1), -1px -1px 2px rgba(255,255,255,1), 1px -1px 2px rgba(255,255,255,1), -1px 1px 2px rgba(255,255,255,1), 0px 0px 4px rgba(255,255,255,1);
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+    font-stretch: condensed;
+    word-break: keep-all;
+    overflow-wrap: normal;
+}
+
+/* Stili per il toggle switch */
+.switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #444;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 .user-dot-compass {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     background-color: #000;
     border: 3px solid #fff;
     border-radius: 50%;
@@ -307,25 +459,93 @@ button:hover {
     z-index: 20; 
 }
 
-.party-logo-axis {
+.party-axis-group {
     position: absolute;
-    top: 50%; 
-    transform: translate(-50%, -50%); 
-    width: 32px;  
-    height: 32px; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.party-axis-group:hover {
+    z-index: 50;
+}
+
+.party-axis-group .party-logo-axis {
+    width: 36px;  
+    height: 36px; 
     border-radius: 50%;
     border: 2px solid white;
     box-shadow: 0 0 4px rgba(0,0,0,0.3);
-    z-index: 10;
     background-color: white; 
-    transition: transform 0.2s, z-index 0.2s;
+    transition: transform 0.2s, opacity 0.2s;
     opacity: 0.8;
+    display: block;
 }
 
-.party-logo-axis:hover {
-    transform: translate(-50%, -50%) scale(1.4);
-    z-index: 50; 
+.party-axis-group:hover .party-logo-axis {
+    transform: scale(1.4);
     opacity: 1;
+}
+
+.custom-tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px); /* Spazio per il triangolo e l'hover */
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.party-axis-group:hover .custom-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.custom-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+.custom-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 7px;
+    border-style: solid;
+    border-color: #ccc transparent transparent transparent;
+}
+
+.tooltip-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    box-shadow: 0 0 2px rgba(0,0,0,0.1);
+}
+
+.tooltip-text {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
 }
 
 .bar-indicator {
@@ -403,17 +623,17 @@ button:hover {
 }
 
 .party-card.winner .result-logo {
-    width: 100px; 
-    height: 100px;
+    width: 120px; 
+    height: 120px;
 }
 
 .party-card.winner .party-name {
-    font-size: 1.25em; 
+    font-size: 1.4em; 
 }
 
 .result-logo {
-    width: 48px; 
-    height: 48px;
+    width: 64px; 
+    height: 64px;
     border-radius: 50%;
     object-fit: contain;
     background: white;
@@ -422,12 +642,12 @@ button:hover {
 }
 
 .party-name {
-    font-size: 0.9em; 
+    font-size: 1.1em; 
     font-weight: bold;
 }
 
 .match-percent {
-    font-size: 0.8em;
+    font-size: 0.95em;
     color: #666;
 }
 

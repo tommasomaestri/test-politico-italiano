@@ -40,8 +40,8 @@
     "logo": "img/fi.png",
     "axes": {
       "economia": 48,
-      "autorita": 20,
-      "identita": 40,
+      "autorita": 15,
+      "identita": 10,
       "nazione": 15,
       "giustizia": 30,
       "ambiente": 40
@@ -52,7 +52,7 @@
     "logo": "img/nm.png",
     "axes": {
       "economia": 35,
-      "autorita": 17,
+      "autorita": 20,
       "identita": 45,
       "nazione": 25,
       "giustizia": 40,
@@ -65,10 +65,10 @@
     "axes": {
       "economia": 35,
       "autorita": -10,
-      "identita": -25,
-      "nazione": -45,
+      "identita": -45,
+      "nazione": -80,
       "giustizia": 15,
-      "ambiente": 10
+      "ambiente": 5
     }
   },
   {
@@ -77,19 +77,19 @@
     "axes": {
       "economia": 25,
       "autorita": -15,
-      "identita": -25,
-      "nazione": -45,
+      "identita": -45,
+      "nazione": -75,
       "giustizia": 10,
-      "ambiente": 10
+      "ambiente": -10
     }
   },
   {
     "name": "+Europa",
     "logo": "img/+e.jpg",
     "axes": {
-      "economia": 20,
+      "economia": 15,
       "autorita": -45,
-      "identita": -80,
+      "identita": -85,
       "nazione": -90,
       "giustizia": -60,
       "ambiente": -55
@@ -101,46 +101,46 @@
     "axes": {
       "economia": -11,
       "autorita": -15,
-      "identita": -70,
+      "identita": -60,
       "nazione": -60,
       "giustizia": -40,
-      "ambiente": -55
+      "ambiente": -65
     }
   },
   {
     "name": "Movimento 5 Stelle",
     "logo": "img/m5s.png",
     "axes": {
-      "economia": -45,
-      "autorita": -10,
+      "economia": -40,
+      "autorita": -5,
       "identita": -50,
       "nazione": -25,
       "giustizia": -10,
-      "ambiente": -70
+      "ambiente": -55
     }
   },
   {
     "name": "Alleanza Verdi-Sinistra",
     "logo": "img/avs.png",
     "axes": {
-      "economia": -60,
+      "economia": -55,
       "autorita": -40,
       "identita": -90,
       "nazione": -70,
       "giustizia": -75,
-      "ambiente": -95
+      "ambiente": -80
     }
   },
   {
     "name": "Potere al Popolo",
     "logo": "img/pap.png",
     "axes": {
-      "economia": -100,
-      "autorita": -65,
+      "economia": -80,
+      "autorita": -40,
       "identita": -85,
       "nazione": -45,
       "giustizia": -85,
-      "ambiente": -85
+      "ambiente": -75
     }
   }
 ]

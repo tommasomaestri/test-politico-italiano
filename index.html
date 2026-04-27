@@ -17,8 +17,11 @@
 
         <div id="start-screen" class="screen active">
             <h1>Scopri la tua posizione politica</h1>
-            <p>Rispondi a 30 domande per scoprire dove ti collochi nel panorama italiano.</p>
-            <button id="start-btn" onclick="startTest()" disabled>Caricamento domande...</button>
+            <p>Rispondi alle domande per scoprire dove ti collochi nel panorama italiano.</p>
+            <div class="start-buttons">
+                <button id="start-quick-btn" onclick="startTest(false)" disabled>Caricamento...</button>
+                <button id="start-advanced-btn" onclick="startTest(true)" disabled>Caricamento...</button>
+            </div>
         </div>
 
         <div id="quiz-screen" class="screen">
@@ -50,9 +53,23 @@
 
         <div id="results-screen" class="screen">
             <h2>I Tuoi Risultati</h2>
+            
+            <div id="user-ideology-container" style="text-align: center; margin: 25px 0;">
+                <h4 style="color: #666; margin-bottom: 5px; font-weight: normal;">La tua ideologia più affine:</h4>
+                <h2 id="user-ideology" style="color: #222; margin-top: 0; font-size: 2.2em; letter-spacing: -0.5px;">...</h2>
+            </div>
 
             <div class="compass-container">
                 <h3>Bussola Politica</h3>
+                
+                <div class="switch-wrapper">
+                    <span>Mostra Ideologie</span>
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-ideologies" onchange="toggleIdeologies()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
                 <div class="compass-layout">
                     <div class="compass-label-y">AUTORITARIO</div>
                     <div class="compass-row">
@@ -66,6 +83,10 @@
                         <div class="compass-label-x left-align">DESTRA</div>
                     </div>
                     <div class="compass-label-y">LIBERTARIO</div>
+                </div>
+
+                <div class="compass-disclaimer" data-html2canvas-ignore="true">
+                    <i class="fa-solid fa-circle-info"></i> <strong>Nota metodologica:</strong> il posizionamento dei partiti e la mappatura delle aree ideologiche sul compasso bidimensionale hanno uno scopo puramente indicativo e divulgativo. La politica è una materia complessa che spesso sfugge alle semplificazioni geometriche. Le posizioni rappresentate sono stime basate sull'analisi di programmi elettorali, posizioni storiche e orientamenti generali, e non pretendono di avere valenza di verità assoluta.
                 </div>
             </div>
 

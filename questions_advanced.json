@@ -1,0 +1,434 @@
+[
+  {
+    "id": "E6",
+    "text": "Il salario minimo legale dovrebbe essere introdotto in Italia, fissando una soglia sotto la quale nessun contratto di lavoro può scendere.",
+    "pro": "Protegge i lavoratori nei settori con sindacati deboli o assenti, dove i contratti collettivi non coprono tutti. Quasi tutta l'Europa ce l'ha: Italia e Svezia sono le ultime eccezioni.",
+    "con": "Rischia di comprimere la contrattazione collettiva che in Italia funziona meglio di una soglia unica nazionale. Potrebbe aumentare il lavoro nero nelle aree dove il costo del lavoro è già alto.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "E7",
+    "text": "I contratti a tempo determinato e le forme di lavoro precario dovrebbero essere fortemente limitate per legge.",
+    "pro": "La precarietà lavorativa impedisce ai giovani di fare progetti di vita (mutui, famiglie, figli) e genera insicurezza psicologica cronica. Un'economia sana si basa su consumi stabili, non su lavoratori in ansia.",
+    "con": "La flessibilità contrattuale è necessaria per le imprese che operano in mercati ciclici; limitarla rigidamente può ridurre le assunzioni totali. Molti giovani preferiscono la flessibilità a un contratto fisso con meno prospettive.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "E8",
+    "text": "Lo Stato dovrebbe intervenire attivamente per calmierare i prezzi degli affitti nelle grandi città.",
+    "pro": "In città come Milano e Roma gli affitti sono diventati inaccessibili per redditi medi e bassi, espellendo famiglie e lavoratori dai centri urbani. Il mercato immobiliare da solo non produce accessibilità abitativa.",
+    "con": "I blocchi degli affitti riducono l'offerta abitativa nel lungo periodo perché disincentivano i proprietari a mettere sul mercato gli immobili. Meglio incentivare la costruzione di nuovi alloggi che distorcere i prezzi.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "E9",
+    "text": "Il debito pubblico italiano è un problema urgente che richiede tagli significativi alla spesa pubblica.",
+    "pro": "Con un debito al 140% del PIL, l'Italia è vulnerabile agli shock finanziari e paga interessi enormi che sottraggono risorse a scuola, sanità e investimenti. Ridurlo è una questione di responsabilità verso le generazioni future.",
+    "con": "Tagliare la spesa pubblica in periodi di bassa crescita deprime ulteriormente l'economia, come dimostrato dall'austerità degli anni 2010. Il problema è la crescita bassa, non la spesa alta.",
+    "axis": "economia",
+    "multiplier": 1
+  },
+  {
+    "id": "E10",
+    "text": "Le grandi piattaforme digitali (Amazon, Google, Meta) dovrebbero essere tassate molto di più sui profitti generati in Italia.",
+    "pro": "Queste aziende usano infrastrutture, lavoratori e consumatori italiani ma pagano tasse irrisorie grazie a sedi fiscali in paesi a bassa imposizione. È una distorsione competitiva a danno delle imprese locali.",
+    "con": "Una tassazione unilaterale rischia ritorsioni commerciali e la fuga di investimenti tecnologici. Il problema va risolto a livello OCSE o UE, non con misure nazionali che isolano il paese.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "A6",
+    "text": "I minori che commettono reati gravi dovrebbero essere giudicati e puniti come gli adulti a partire dai 16 anni.",
+    "pro": "Per reati gravi come omicidio o violenza sessuale, l'età non cancella il danno alle vittime; la percezione di impunità minorile può incoraggiare il crimine. Alcuni paesi europei applicano regimi speciali già a 16 anni.",
+    "con": "Il cervello adolescente non è neurologicamente maturo nelle funzioni di controllo degli impulsi: punire come adulti non riduce la recidiva e distrugge possibilità di recupero. Il sistema minorile esiste per buone ragioni scientifiche.",
+    "axis": "autorita",
+    "multiplier": 1
+  },
+  {
+    "id": "A7",
+    "text": "Lo Stato dovrebbe avere il diritto di oscurare siti web e contenuti online ritenuti pericolosi per l'ordine pubblico o la sicurezza nazionale.",
+    "pro": "La libertà di espressione non include l'incitamento alla violenza, la propaganda terroristica o la disinformazione sistematica che mina la democrazia. Ogni paese regola già i media tradizionali.",
+    "con": "Il potere di oscurare contenuti online è facilmente abusabile per silenziare il dissenso politico. La storia recente mostra che i governi tendono ad allargare progressivamente queste prerogative.",
+    "axis": "autorita",
+    "multiplier": 1
+  },
+  {
+    "id": "A8",
+    "text": "Il porto d'armi per autodifesa dovrebbe essere più accessibile ai cittadini comuni.",
+    "pro": "In zone rurali o periferiche con scarsa presenza delle forze dell'ordine, il diritto all'autodifesa è concreto. Paesi con alto possesso legale di armi non mostrano necessariamente tassi di criminalità più alti.",
+    "con": "Più armi circolanti significano più incidenti domestici, più femminicidi e più escalation di conflitti banali. La sicurezza si garantisce con più polizia e più coesione sociale, non con l'armamento privato.",
+    "axis": "autorita",
+    "multiplier": 1
+  },
+  {
+    "id": "A9",
+    "text": "L'uso della cannabis a scopo terapeutico e ricreativo dovrebbe essere legalizzato e regolamentato dallo Stato.",
+    "pro": "La legalizzazione regolamentata elimina il mercato nero, garantisce qualità e sicurezza del prodotto, genera gettito fiscale e libera risorse di polizia per reati più gravi. Canada e diversi stati USA lo dimostrano.",
+    "con": "Legalizzare la cannabis manda un segnale di normalizzazione sociale che può aumentare il consumo, specialmente tra i giovani. I problemi di salute correlati all'uso cronico sono documentati.",
+    "axis": "autorita",
+    "multiplier": -1
+  },
+  {
+    "id": "A10",
+    "text": "I richiedenti asilo in attesa di giudizio non dovrebbero essere trattenuti in centri di detenzione.",
+    "pro": "La detenzione amministrativa di persone che non hanno commesso reati viola principi fondamentali di libertà personale. Le alternative (obbligo di dimora, presentazione periodica) funzionano e costano meno.",
+    "con": "Senza trattenimento, molti richiedenti si rendono irreperibili prima della decisione sulla loro domanda, vanificando il sistema di gestione dei flussi. La detenzione breve è uno strumento necessario di controllo.",
+    "axis": "autorita",
+    "multiplier": -1
+  },
+  {
+    "id": "T6",
+    "text": "Nelle scuole pubbliche si dovrebbe insegnare l'educazione sessuale e affettiva in modo esplicito e laico, a partire dalla scuola primaria.",
+    "pro": "L'educazione sessuale riduce le gravidanze indesiderate, le malattie sessualmente trasmissibili e gli abusi: i dati lo confermano in tutti i paesi che la implementano seriamente. I bambini ricevono comunque informazioni — meglio che siano accurate.",
+    "con": "Queste tematiche riguardano la sfera più intima e personale: spetta alle famiglie, non allo Stato, decidere quando e come affrontarle con i propri figli. Introdurla in età precoce è considerato inopportuno da molte tradizioni culturali e religiose.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "T7",
+    "text": "Le persone transgender dovrebbero poter cambiare il proprio genere sui documenti ufficiali senza necessità di intervento chirurgico.",
+    "pro": "Costringere le persone a subire interventi medici invasivi per ottenere il riconoscimento giuridico della propria identità è una violazione dell'integrità corporea. Molti paesi europei lo permettono già con semplice dichiarazione.",
+    "con": "Il genere sui documenti ha rilevanza legale e medica: modificarlo senza un percorso medico certificato può creare problemi in contesti come lo sport, le carceri o la medicina. La distinzione biologica tra sessi ha valore oggettivo.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "T8",
+    "text": "Il fine vita (eutanasia o suicidio assistito) dovrebbe essere legalmente accessibile a chi soffre di malattie incurabili e lo richiede consapevolmente.",
+    "pro": "Nessuno dovrebbe essere costretto a soffrire contro la propria volontà quando la medicina non può più guarire. Il rispetto dell'autonomia della persona include il diritto a decidere della propria morte in condizioni di lucidità.",
+    "con": "Legalizzare il suicidio assistito rischia di creare pressioni implicite sui malati cronici, anziani e disabili a \"non essere un peso\". La risposta giusta è investire nelle cure palliative, non facilitare la morte.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "T9",
+    "text": "Il linguaggio \"inclusivo\" (uso dello schwa o dell'asterisco per neutralizzare il genere) dovrebbe essere adottato nelle comunicazioni ufficiali dello Stato.",
+    "pro": "Il linguaggio riflette e costruisce la realtà sociale: rendere visibili le persone non binarie nelle comunicazioni istituzionali è un atto di riconoscimento. Altre lingue europee si stanno adattando allo stesso modo.",
+    "con": "Modificare una lingua per decreto istituzionale è un intervento forzato su un sistema che evolve naturalmente. Lo schwa è foneticamente innaturale per l'italiano e crea barriere di leggibilità, specialmente per dislessici e stranieri.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "T10",
+    "text": "Le adozioni internazionali dovrebbero essere facilitate e incentivate come risposta concreta all'abbandono minorile nel mondo.",
+    "pro": "Migliaia di bambini nel mondo vivono in istituti senza prospettive: l'adozione internazionale dà loro una famiglia. Limitarla con burocrazia eccessiva danneggia prima di tutto i bambini.",
+    "con": "L'adozione internazionale ha storicamente generato traffici di minori e strappato bambini dalle loro comunità culturali d'origine. La priorità dovrebbe essere sostenere i sistemi di protezione dell'infanzia nei paesi d'origine.",
+    "axis": "identita",
+    "multiplier": 1
+  },
+  {
+    "id": "N6",
+    "text": "L'Italia dovrebbe sostenere la creazione di un esercito europeo comune in sostituzione parziale delle forze nazionali.",
+    "pro": "Un esercito europeo sarebbe più efficiente e meno costoso di 27 eserciti nazionali separati, e darebbe all'Europa autonomia strategica dagli USA. Sarebbe la risposta logica al disimpegno americano dalla NATO.",
+    "con": "Cedere il controllo della difesa nazionale significa cedere la leva più fondamentale della sovranità statale. Le differenze strategiche tra paesi europei (es. neutralità austriaca, ambizioni francesi) rendono un esercito comune quasi impraticabile.",
+    "axis": "nazione",
+    "multiplier": -1
+  },
+  {
+    "id": "N7",
+    "text": "L'Italia dovrebbe condizionare gli aiuti allo sviluppo verso i paesi africani alla loro cooperazione nel controllo dei flussi migratori.",
+    "pro": "È ragionevole che i paesi donatori chiedano reciprocità: la cooperazione allo sviluppo funziona meglio quando è legata a obiettivi condivisi, inclusa la gestione ordinata delle migrazioni. Lo fa già l'UE con il Piano Mattei.",
+    "con": "Usare gli aiuti umanitari come leva di controllo migratorio distorce la loro natura e li rende inefficaci come strumento di sviluppo. I paesi più poveri finiscono per ricevere meno aiuti proprio quando ne hanno più bisogno.",
+    "axis": "nazione",
+    "multiplier": 1
+  },
+  {
+    "id": "N8",
+    "text": "Le aziende italiane che delocalizzano la produzione all'estero dovrebbero perdere i benefici fiscali e i contributi pubblici ricevuti.",
+    "pro": "È ingiusto che un'azienda riceva sussidi pubblici italiani e poi trasferisca i posti di lavoro in paesi a basso costo. Lo Stato ha il diritto di tutelare l'occupazione nazionale con gli strumenti fiscali.",
+    "con": "Penalizzare le delocalizzazioni riduce la competitività delle imprese italiane sui mercati globali e può accelerare le chiusure. Le catene del valore globali sono ormai strutturali: combatterle è controproducente.",
+    "axis": "nazione",
+    "multiplier": 1
+  },
+  {
+    "id": "N9",
+    "text": "L'italiano dovrebbe essere l'unica lingua ufficiale consentita nelle comunicazioni istituzionali, escludendo anche le minoranze linguistiche riconosciute.",
+    "pro": "Una lingua ufficiale unica è il fondamento dell'unità nazionale e dell'efficienza amministrativa. Le minoranze possono preservare la propria lingua in ambito privato e culturale senza che diventi una questione istituzionale.",
+    "con": "Le minoranze linguistiche storiche (ladini, sloveni, tedeschi in Alto Adige, occitani) hanno diritti costituzionalmente riconosciuti che riflettono secoli di storia. Eliminarli sarebbe una violazione costituzionale e un impoverimento culturale.",
+    "axis": "nazione",
+    "multiplier": 1
+  },
+  {
+    "id": "N10",
+    "text": "L'Italia dovrebbe ridurre le proprie importazioni da paesi con standard lavorativi e ambientali inferiori ai nostri, anche a costo di prezzi più alti per i consumatori.",
+    "pro": "Il libero scambio senza clausole sociali e ambientali è una concorrenza sleale che abbassa gli standard globali verso il basso. I consumatori italiani pagano prezzi bassi grazie allo sfruttamento di lavoratori altrove.",
+    "con": "Le restrizioni alle importazioni aumentano i prezzi per i consumatori più poveri, che non possono permettersi prodotti \"etici\" più costosi. Il protezionismo non ha mai migliorato le condizioni dei lavoratori nei paesi in via di sviluppo.",
+    "axis": "nazione",
+    "multiplier": 1
+  },
+  {
+    "id": "G6",
+    "text": "La prescrizione dei reati dovrebbe essere abolita o fortemente allungata per i reati gravi.",
+    "pro": "È intollerabile che reati gravi vadano impuniti solo per i tempi lunghi della giustizia italiana. L'imputato non dovrebbe beneficiare dell'inefficienza del sistema che dovrebbe giudicarlo.",
+    "con": "La prescrizione tutela il diritto a non essere sotto processo indefinitamente: uno Stato che può processare qualcuno senza limiti di tempo ha uno strumento di pressione pericoloso. La soluzione è accelerare i processi, non abolire la prescrizione.",
+    "axis": "giustizia",
+    "multiplier": 1
+  },
+  {
+    "id": "G7",
+    "text": "I magistrati inquirenti (PM) e quelli giudicanti dovrebbero operare in carriere completamente separate e non intercambiabili.",
+    "pro": "Un giudice che ha fatto il PM conserva una cultura accusatoria difficile da dismettere: la separazione garantisce una vera terzietà del giudicante. Quasi tutti i sistemi giuridici europei la prevedono.",
+    "con": "La separazione delle carriere indebolisce il PM rispetto alle difese delle grandi organizzazioni criminali, che possono permettersi avvocati molto più costosi. Il problema è la cultura corporativa della magistratura, non la struttura delle carriere.",
+    "axis": "giustizia",
+    "multiplier": -1
+  },
+  {
+    "id": "G8",
+    "text": "Le pene per i reati di corruzione e criminalità dei colletti bianchi dovrebbero essere molto più severe di quelle attuali.",
+    "pro": "La corruzione ha un costo enorme per la società intera — ritarda opere pubbliche, distorce la concorrenza, impoverisce i servizi — eppure è punita molto meno dei reati con violenza fisica. Le pene attuali non sono deterrenti.",
+    "con": "L'inasprimento delle pene senza accelerare i processi è inefficace: se la probabilità di essere condannati è bassa, aumentare la pena teorica non cambia i calcoli del corrotto. Serve più probabilità di condanna, non pene più lunghe.",
+    "axis": "giustizia",
+    "multiplier": 1
+  },
+  {
+    "id": "G9",
+    "text": "Le vittime di reato dovrebbero avere un ruolo più centrale nel processo penale, incluso il diritto di influenzare la pena.",
+    "pro": "Il sistema penale attuale marginalizza le vittime: sono testimoni, non protagoniste. Dar loro voce nella determinazione della pena — come nei sistemi di giustizia riparativa nordici — è un atto di rispetto e dignità.",
+    "con": "Il processo penale tutela l'interesse pubblico, non solo quello privato della vittima: una pena calibrata sul desiderio di vendetta della vittima non è giustizia, è rivalsa. Il rischio è la disparità di trattamento tra vittime \"empatiche\" e vittime \"antipatiche\".",
+    "axis": "giustizia",
+    "multiplier": 1
+  },
+  {
+    "id": "G10",
+    "text": "Le carceri italiane sono sovraffollate: andrebbero costruite nuove strutture piuttosto che ricorrere a misure alternative alla detenzione.",
+    "pro": "Il sovraffollamento carcerario è una violazione della dignità umana certificata dalla CEDU: costruire nuove strutture è la risposta più diretta al problema. Chi ha commesso un reato deve scontare la pena in condizioni dignitose ma effettive.",
+    "con": "Costruire carceri risponde al sovraffollamento ma non risolve la recidiva: l'Italia ha già tra i tassi di recidiva più alti d'Europa proprio perché non investe nel reinserimento. Detenzione e misure alternative non sono in contraddizione.",
+    "axis": "giustizia",
+    "multiplier": 1
+  },
+  {
+    "id": "Ec6",
+    "text": "Il consumo di suolo agricolo e naturale dovrebbe essere vietato per legge, bloccando nuove costruzioni su terreni non già urbanizzati.",
+    "pro": "L'Italia perde decine di migliaia di ettari di terreno agricolo ogni anno: suolo fertile e biodiversità persi sono irreversibili. Rigenerare l'esistente è possibile e più efficiente che consumare nuovo territorio.",
+    "con": "Un divieto assoluto blocca lo sviluppo di infrastrutture necessarie (logistica, energia, ospedali) e penalizza le aree rurali che vogliono attrarre investimenti. La gestione del territorio dovrebbe restare ai comuni, non essere imposta centralmente.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec7",
+    "text": "I sussidi all'agricoltura intensiva dovrebbero essere eliminati e riorientati verso l'agricoltura biologica e sostenibile.",
+    "pro": "L'agricoltura intensiva è tra le principali cause di perdita di biodiversità, inquinamento delle falde acquifere e emissioni di gas serra. Sussidiarla con fondi pubblici significa pagare per distruggere l'ambiente.",
+    "con": "L'agricoltura biologica non è in grado di nutrire la popolazione mondiale agli stessi costi: eliminare i sussidi all'intensivo aumenta i prezzi alimentari, colpendo soprattutto le famiglie con redditi bassi. La transizione deve essere graduale e accompagnata.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec8",
+    "text": "Le grandi città italiane dovrebbero vietare la circolazione dei veicoli privati nelle aree centrali, investendo massicciamente nel trasporto pubblico.",
+    "pro": "L'inquinamento da traffico nelle città italiane causa decine di migliaia di morti premature ogni anno; le ZTL estese riducono emissioni, rumore e incidenti. Le città europee che lo hanno fatto (Oslo, Amsterdam) hanno migliorato la qualità della vita.",
+    "con": "Vietare le auto private colpisce soprattutto chi non può permettersi di vivere vicino ai mezzi pubblici o di cambiare le proprie abitudini rapidamente. Prima si deve investire in trasporti pubblici efficienti, non dopo.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec9",
+    "text": "L'Italia dovrebbe uscire dagli accordi internazionali sul clima se questi penalizzano eccessivamente la nostra industria rispetto ai paesi concorrenti.",
+    "pro": "Gli accordi climatici hanno senso solo se universali: se Cina e India continuano a inquinare liberamente, l'Italia che si impone limiti costosi perde competitività senza benefici globali reali. La sovranità economica viene prima di accordi asimmetrici.",
+    "con": "L'Italia è già tra i paesi più vulnerabili al cambiamento climatico (siccità, alluvioni, innalzamento del Mediterraneo): uscire dagli accordi significa sabotare la protezione del proprio territorio. Il disimpegno di un paese apre la porta al disimpegno di tutti.",
+    "axis": "ambiente",
+    "multiplier": 1
+  },
+  {
+    "id": "Ec10",
+    "text": "Le aziende dovrebbero essere obbligate per legge a pubblicare annualmente un bilancio di sostenibilità verificato da enti indipendenti.",
+    "pro": "Senza obblighi di trasparenza, le dichiarazioni ambientali delle aziende sono spesso greenwashing non verificabile. La rendicontazione obbligatoria permette ai consumatori, agli investitori e allo Stato di fare scelte informate.",
+    "con": "Gli obblighi di rendicontazione sono un onere burocratico e di costo sproporzionato per le PMI, che costituiscono la spina dorsale dell'economia italiana. Meglio incentivi volontari che obblighi che svantaggiano le imprese più piccole.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "E11",
+    "text": "Le università pubbliche dovrebbero essere completamente gratuite, finanziate interamente dallo Stato.",
+    "pro": "Il costo degli studi universitari esclude i giovani di famiglie meno abbienti da percorsi formativi che determinano il loro futuro. Un paese che investe nell'istruzione investe nella propria produttività a lungo termine.",
+    "con": "Chi si laurea guadagna mediamente molto di più di chi non si laurea: è giusto che contribuisca al costo della propria formazione. Le risorse liberate potrebbero rafforzare scuola dell'obbligo e formazione professionale, che raggiungono tutti.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "E12",
+    "text": "Lo Stato dovrebbe nazionalizzare o acquisire quote di controllo nelle aziende strategiche in difficoltà invece di lasciarle fallire o venderle all'estero.",
+    "pro": "Perdere aziende strategiche (acciaio, telecomunicazioni, energia) significa perdere occupazione, know-how e sovranità economica. L'intervento pubblico in settori chiave è normale in Francia, Germania e persino negli USA.",
+    "con": "Le nazionalizzazioni storicamente producono aziende inefficienti che sopravvivono grazie a sussidi pubblici, distorcendo il mercato. Il problema del declino industriale si risolve con politiche industriali intelligenti, non con la proprietà statale.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "E13",
+    "text": "Le eredità sopra una certa soglia dovrebbero essere tassate pesantemente per ridurre la trasmissione intergenerazionale della ricchezza.",
+    "pro": "Ereditare grandi patrimoni senza averli guadagnati contraddice il principio meritocratico: chi nasce ricco parte da una posizione di vantaggio enorme rispetto a chi nasce povero. Molti paesi con alta mobilità sociale hanno tasse di successione elevate.",
+    "con": "Chi accumula un patrimonio lo ha già tassato durante la vita: tassarlo di nuovo alla morte è una doppia imposizione che scoraggia il risparmio e la creazione di imprese familiari. Spesso costringe a vendere aziende per pagare le tasse.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "E14",
+    "text": "I servizi pubblici locali (acqua, trasporti urbani, raccolta rifiuti) non dovrebbero mai essere gestiti da privati.",
+    "pro": "I servizi essenziali non possono essere governati dalla logica del profitto: l'acqua pubblica e i trasporti locali devono essere accessibili a tutti, non solo a chi può pagarli. Le privatizzazioni dei servizi locali hanno spesso peggiorato qualità e aumentato tariffe.",
+    "con": "La gestione privata, se ben regolata e con contratti chiari, può essere più efficiente di quella pubblica, liberando risorse per altri scopi. Il problema non è chi gestisce, ma come sono scritti i contratti di servizio.",
+    "axis": "economia",
+    "multiplier": -1
+  },
+  {
+    "id": "A11",
+    "text": "L'ergastolo senza possibilità di liberazione condizionale è una pena accettabile per i reati più gravi.",
+    "pro": "Per crimini di eccezionale gravità — stragi, omicidi seriali, crimini contro l'umanità — la società ha il diritto di proteggersi permanentemente. La liberazione condizionale non è un diritto, ma un privilegio che si deve guadagnare.",
+    "con": "Una pena senza fine nega qualsiasi possibilità di redenzione e contraddice il principio costituzionale della funzione rieducativa. La Corte europea dei diritti dell'uomo ha più volte rilevato profili di incompatibilità con il divieto di trattamenti inumani.",
+    "axis": "autorita",
+    "multiplier": 1
+  },
+  {
+    "id": "A12",
+    "text": "Lo Stato dovrebbe poter espellere cittadini stranieri residenti legalmente in Italia se condannati per reati gravi, anche dopo aver scontato la pena.",
+    "pro": "La residenza legale non è un diritto incondizionato: chi abusa dell'accoglienza commettendo reati gravi perde la legittimità a rimanere. La sicurezza della comunità ospitante ha priorità sul diritto di soggiorno.",
+    "con": "Chi ha scontato la pena ha pagato il proprio debito con la società: espellerlo è una doppia punizione. Per chi è cresciuto in Italia, l'espulsione verso un paese che non conosce è di fatto una pena supplementare non prevista dalla sentenza.",
+    "axis": "autorita",
+    "multiplier": 1
+  },
+  {
+    "id": "A13",
+    "text": "I dati personali dei cittadini raccolti dalle aziende tecnologiche dovrebbero essere di proprietà degli utenti, con diritto alla cancellazione totale.",
+    "pro": "I dati personali sono un'estensione della persona: cederli gratuitamente alle piattaforme in cambio di servizi è un contratto squilibrato che le persone non comprendono appieno. Il GDPR europeo va nella giusta direzione ma non è abbastanza.",
+    "con": "La raccolta dati è il modello economico su cui si regge l'intera economia digitale: renderla impossibile o troppo onerosa distrugge servizi che miliardi di persone usano volontariamente. La regolazione eccessiva avvantaggia i giganti già consolidati rispetto ai nuovi entranti.",
+    "axis": "autorita",
+    "multiplier": -1
+  },
+  {
+    "id": "A14",
+    "text": "Le forze dell'ordine dovrebbero poter utilizzare il riconoscimento facciale in tempo reale negli spazi pubblici per prevenire i reati.",
+    "pro": "Il riconoscimento facciale permette di identificare ricercati, terroristi e persone scomparse in tempo reale: è uno strumento potente di sicurezza pubblica già usato in molti paesi. La sorveglianza intelligente può prevenire crimini prima che accadano.",
+    "con": "La sorveglianza biometrica di massa trasforma lo spazio pubblico in uno spazio controllato, scoraggiando la libertà di movimento, di riunione e di protesta. I sistemi di riconoscimento facciale hanno tassi di errore molto più alti su donne e persone di colore.",
+    "axis": "autorita",
+    "multiplier": 1
+  },
+  {
+    "id": "T11",
+    "text": "Il matrimonio dovrebbe rimanere definito per legge come unione tra un uomo e una donna.",
+    "pro": "Il matrimonio ha una funzione sociale e biologica legata alla procreazione che giustifica una definizione specifica. Le coppie dello stesso sesso possono avere diritti equivalenti tramite istituti giuridici distinti senza ridefinire il matrimonio.",
+    "con": "Negare il matrimonio alle coppie omosessuali è discriminazione istituzionalizzata: i diritti non possono dipendere dall'orientamento sessuale. La \"separazione ma uguale\" è storicamente sempre stata una forma mascherata di disuguaglianza.",
+    "axis": "identita",
+    "multiplier": 1
+  },
+  {
+    "id": "T12",
+    "text": "Le quote di genere obbligatorie nei consigli di amministrazione delle grandi aziende sono uno strumento giusto per ridurre le disuguaglianze.",
+    "pro": "Senza intervento normativo, i meccanismi informali di selezione perpetuano i bias esistenti: le quote rompono circoli viziosi dimostrati. I paesi che le hanno introdotte hanno visto un miglioramento reale nella rappresentanza femminile.",
+    "con": "Le nomine dovrebbero basarsi sul merito, non sul genere: le quote rischiano di alimentare il sospetto che le donne in posizioni di vertice ci siano \"per quota\". Meglio lavorare sull'accesso paritario all'istruzione e alla carriera fin dalle basi.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "T13",
+    "text": "L'obiezione di coscienza dei medici sull'aborto dovrebbe essere limitata per garantire l'accesso uniforme alla procedura su tutto il territorio nazionale.",
+    "pro": "In molte regioni italiane oltre il 70% dei ginecologi è obiettore: il diritto all'aborto esiste sulla carta ma non nella pratica. Un diritto accessibile solo in alcune città non è un diritto reale.",
+    "con": "Costringere un medico a praticare un intervento che considera moralmente sbagliato viola la libertà di coscienza, che è un diritto fondamentale quanto quello all'aborto. La soluzione è assumere più medici non obiettori, non eliminare l'obiezione.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "T14",
+    "text": "La storia delle religioni dovrebbe essere insegnata in modo laico e comparativo nelle scuole pubbliche, sostituendo l'attuale ora di religione cattolica.",
+    "pro": "In una società plurale e multiculturale, conoscere le diverse tradizioni religiose è una competenza civica fondamentale. L'ora di religione cattolica finanziata dallo Stato in scuole pubbliche è un retaggio concordatario anacronistico.",
+    "con": "L'ora di religione cattolica riflette la storia e la cultura del paese: non è indottrinamento ma trasmissione di un patrimonio culturale che appartiene a tutti, credenti e non. Chi non vuole partecipare ha già la possibilità di uscire.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "N11",
+    "text": "L'Italia dovrebbe accettare quote vincolanti di redistribuzione dei migranti decise dall'Unione Europea, anche contro la propria volontà.",
+    "pro": "La gestione dei flussi migratori è un problema europeo che richiede solidarietà europea: lasciare soli i paesi di primo ingresso (Italia, Grecia) non è né equo né efficace. Le quote vincolanti sono l'unico meccanismo che funziona.",
+    "con": "Le quote imposte dall'UE violano la sovranità nazionale su una materia sensibile come l'immigrazione e creano tensioni sociali nei paesi riceventi che non hanno voce in capitolo. La solidarietà deve essere volontaria per essere sostenibile.",
+    "axis": "nazione",
+    "multiplier": -1
+  },
+  {
+    "id": "N12",
+    "text": "L'Italia dovrebbe riconoscere lo Stato di Palestina e sospendere le forniture di armi a Israele fino a un cessate il fuoco permanente.",
+    "pro": "Il riconoscimento della Palestina è un atto di coerenza con il diritto internazionale e la soluzione due popoli-due stati. Continuare a fornire armi a un conflitto con un alto numero di vittime civili rende l'Italia corresponsabile.",
+    "con": "La politica estera non si fa con i riconoscimenti simbolici ma con la diplomazia: riconoscere la Palestina senza un accordo negoziale non avvicina la pace. Sospendere le forniture militari a un alleato democratico indebolisce la credibilità italiana in sede NATO.",
+    "axis": "nazione",
+    "multiplier": -1
+  },
+  {
+    "id": "N13",
+    "text": "Gli studenti stranieri che si diplomano in Italia dovrebbero ottenere automaticamente la cittadinanza o un permesso di soggiorno permanente.",
+    "pro": "Chi ha studiato in Italia, parla italiano e conosce la cultura italiana è già integrato: negare la cittadinanza a questi ragazzi è controproducente e crudele. Il capitale umano formato in Italia dovrebbe restare in Italia.",
+    "con": "La cittadinanza è un legame profondo con la comunità nazionale che non si riduce agli anni di scuola: richiede un percorso consapevole, non un automatismo. Concederla automaticamente ne svaluta il significato.",
+    "axis": "nazione",
+    "multiplier": -1
+  },
+  {
+    "id": "N14",
+    "text": "L'Italia dovrebbe uscire dall'euro e tornare a una moneta nazionale per recuperare sovranità sulla politica monetaria.",
+    "pro": "L'euro ha tolto all'Italia lo strumento della svalutazione competitiva, rendendo impossibile rispondere alle crisi economiche con la flessibilità necessaria. Paesi fuori dall'euro come Svezia e Polonia hanno retto meglio alcuni shock.",
+    "con": "Uscire dall'euro causerebbe una crisi finanziaria immediata, con svalutazione della nuova lira, fuga di capitali e aumento del costo del debito pubblico. I benefici ipotetici della sovranità monetaria sarebbero annullati dal caos della transizione.",
+    "axis": "nazione",
+    "multiplier": 1
+  },
+  {
+    "id": "G11",
+    "text": "I reati commessi sotto l'effetto di droghe o alcol dovrebbero prevedere pene più severe, non attenuanti.",
+    "pro": "L'intossicazione volontaria non è una scusante: chi sceglie di assumere sostanze che alterano il comportamento si assume la responsabilità delle conseguenze. Le attenuanti per ubriachezza inviano un messaggio sbagliato alle vittime.",
+    "con": "La dipendenza è una malattia, non una scelta morale: punire più severamente chi delinque in stato di dipendenza senza trattarlo è inefficace e crudele. La recidiva si riduce con la cura, non con pene più dure.",
+    "axis": "giustizia",
+    "multiplier": 1
+  },
+  {
+    "id": "G12",
+    "text": "I procedimenti penali a carico di parlamentari e membri del governo dovrebbero seguire le stesse regole di quelli a carico dei cittadini comuni, senza procedure speciali.",
+    "pro": "La legge è uguale per tutti: qualsiasi privilegio procedurale per i politici alimenta la percezione di impunità e corrode la fiducia nelle istituzioni. L'immunità parlamentare era pensata per tutelare il mandato, non per proteggere i reati comuni.",
+    "con": "I procedimenti penali possono essere usati strumentalmente per destabilizzare avversari politici: alcune tutele procedurali per chi esercita mandati elettivi proteggono la democrazia oltre che la persona. Il rischio di \"giustizialismo\" politico è reale.",
+    "axis": "giustizia",
+    "multiplier": -1
+  },
+  {
+    "id": "G13",
+    "text": "Le intercettazioni telefoniche e ambientali dovrebbero essere utilizzabili in tribunale solo per i reati più gravi (mafia, terrorismo), non per qualsiasi indagine.",
+    "pro": "Le intercettazioni di massa violano la privacy di migliaia di persone non indagate e spesso finiscono sui giornali distruggendo reputazioni prima di qualsiasi condanna. Limitarle ai reati gravi è un bilanciamento ragionevole tra sicurezza e libertà.",
+    "con": "Le intercettazioni sono uno strumento fondamentale anche per reati come corruzione, frode e traffico di influenze: limitarle significa rendere questi reati quasi impunibili. L'abuso non sta nello strumento ma nella mancanza di controllo sulla sua diffusione.",
+    "axis": "giustizia",
+    "multiplier": 1
+  },
+  {
+    "id": "G14",
+    "text": "Le pene pecuniarie (multe) dovrebbero essere proporzionali al reddito del condannato, come avviene in Finlandia.",
+    "pro": "Una multa di 500 euro è irrisoria per un ricco e devastante per un povero: la stessa pena ha effetti deterrenti completamente diversi a seconda del reddito. La giustizia proporzionale al reddito è più equa e più efficace.",
+    "con": "Introdurre multe proporzionali al reddito crea un sistema in cui i ricchi pagano cifre enormi per infrazioni banali, mentre i poveri pagano poco: non è parità davanti alla legge, ma trattamento differenziato in base allo status economico.",
+    "axis": "giustizia",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec11",
+    "text": "Le navi da crociera dovrebbero essere vietate o fortemente limitate nei centri storici delle città d'arte italiane come Venezia.",
+    "pro": "Le grandi navi danneggiano l'ecosistema lagunare, producono inquinamento atmosferico e acustico e contribuiscono all'overtourism che degrada la qualità della vita dei residenti. Il patrimonio UNESCO non può essere sacrificato al turismo di massa.",
+    "con": "Il turismo crocieristico porta miliardi di euro all'economia locale e migliaia di posti di lavoro: vietarlo senza alternative equivale a imporre costi enormi a comunità che già soffrono di spopolamento. La regolazione è preferibile al divieto.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec12",
+    "text": "La caccia dovrebbe essere vietata in Italia in quanto attività incompatibile con la tutela della biodiversità.",
+    "pro": "La caccia riduce le popolazioni di specie selvatiche in un momento in cui la biodiversità è già sotto pressione critica. È un'attività ricreativa per pochi che impone costi ambientali su tutti, inclusi i rischi per i non cacciatori nelle campagne.",
+    "con": "La caccia regolamentata è uno strumento di gestione della fauna selvatica: senza predatori naturali, alcune specie proliferano causando danni all'agricoltura e agli ecosistemi. Fa parte di una tradizione culturale radicata in molte comunità rurali.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec13",
+    "text": "Le imprese che causano danni ambientali documentati dovrebbero essere obbligate a ripristinare i luoghi danneggiati a proprie spese, anche se i danni risalgono a decenni fa.",
+    "pro": "Il principio \"chi inquina paga\" deve avere applicazione retroattiva: le aziende che hanno scaricato sui cittadini i costi dell'inquinamento devono rispondere delle conseguenze. La prescrizione ambientale premia chi ha inquinato di più nel passato.",
+    "con": "Responsabilità retroattive illimitate creano incertezza giuridica insostenibile per le imprese: chi acquisisce un'azienda oggi non può essere ritenuto responsabile di danni causati decenni prima. Il rischio è che le aziende evitino di operare in siti che richiedono bonifica.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "Ec14",
+    "text": "L'Italia dovrebbe investire massicciamente nell'alta velocità ferroviaria per rendere il treno competitivo con l'aereo sulle tratte nazionali.",
+    "pro": "Spostare traffico dall'aereo al treno è uno dei modi più efficaci per ridurre le emissioni nei trasporti. L'alta velocità italiana è già eccellente al Nord ma quasi assente al Sud: completarla ridurrebbe anche il divario territoriale.",
+    "con": "I costi dell'alta velocità sono enormi e i benefici si concentrano nelle aree già più sviluppate e nei viaggiatori più abbienti. Lo stesso investimento su trasporto locale, pendolari e connessioni capillari raggiungerebbe molte più persone.",
+    "axis": "ambiente",
+    "multiplier": -1
+  }
+]
