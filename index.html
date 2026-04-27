@@ -112,11 +112,15 @@
                 </div>
             </div>
 
-            <button onclick="downloadResults()">
+            <button id="download-results-btn" onclick="downloadResults()">
                 <i class="fa-solid fa-download"></i> Scarica Risultati
             </button>
 
-            <button onclick="restartTest()">Rifai il Test</button>
+            <button id="share-link-btn" onclick="copyShareLink()">
+                <i class="fa-solid fa-link"></i> Copia Link Risultati
+            </button>
+
+            <button id="restart-test-btn" onclick="restartTest()">Rifai il Test</button>
         </div>
 
     </div>

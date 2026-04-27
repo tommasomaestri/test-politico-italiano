@@ -25,6 +25,33 @@ async function initApp() {
         ideologies = await idRes.json();
     }
 
+    // Controllo se c'è il parametro di condivisione nell'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sharedData = urlParams.get('r');
+
+    if (sharedData) {
+      try {
+        const decodedString = atob(sharedData);
+        const scoresArray = decodedString.split(',').map(Number);
+        
+        if (scoresArray.length === 6 && !scoresArray.some(isNaN)) {
+          // Ricostruisci i punteggi normalizzati
+          const sharedScores = {
+            economia: scoresArray[0],
+            autorita: scoresArray[1],
+            identita: scoresArray[2],
+            nazione: scoresArray[3],
+            giustizia: scoresArray[4],
+            ambiente: scoresArray[5]
+          };
+          processScores(sharedScores);
+          return; // Fermati qui, non caricare il test
+        }
+      } catch (e) {
+        console.error("Link di condivisione non valido", e);
+      }
+    }
+
     // Controllo se c'è un salvataggio in memoria
     const savedState = sessionStorage.getItem("politicalTestState");
 
@@ -223,8 +250,14 @@ function calculateResults() {
     normalizedScores[axis] = (rawScores[axis] / max) * 100;
   }
 
-  // CALCOLO AFFINITÀ (i pesi rimangono invariati)
-  const weights = { economia: 2.5, autorita: 2.5, identita: 1.0, nazione: 1.0, giustizia: 1.0, ambiente: 1.0 };
+  processScores(normalizedScores);
+}
+
+function processScores(normalizedScores) {
+
+  // CALCOLO AFFINITÀ
+  // Pesi aggiornati: maggior rilevanza agli assi principali e identità
+  const weights = { economia: 5.0, autorita: 5.0, identita: 2.0, nazione: 0.5, giustizia: 0.5, ambiente: 0.5 };
 
   let partyDistances = parties.map(party => {
     let weightedSumOfSquares = 0;
@@ -259,7 +292,12 @@ function calculateResults() {
   showResults(normalizedScores, top3, bottom3, closestIdeology);
 }
 
+// Variabile globale per salvare i punteggi correnti da condividere
+window.currentScoresForSharing = null;
+
 function showResults(scores, top3, bottom3, closestIdeology) {
+  window.currentScoresForSharing = scores; // Salva per la funzione di copia link
+  
   document.getElementById("start-screen").classList.remove("active");
   document.getElementById("quiz-screen").classList.remove("active");
   document.getElementById("results-screen").classList.add("active");
@@ -279,7 +317,9 @@ function showResults(scores, top3, bottom3, closestIdeology) {
     .map(
       (party, index) => `
         <div class="party-card ${index === 0 ? "winner" : ""}">
-            <img src="${party.logo}" alt="${party.name}" class="result-logo">
+            <div class="result-logo-wrapper">
+                <img src="${party.logo}" alt="${party.name}" class="result-logo-img" crossorigin="anonymous">
+            </div>
             <div class="party-name">${party.name}</div>
             <div class="match-percent">${Math.max(0, Math.round(100 - (party.distance / 10)))}% affinità</div>
         </div>
@@ -293,7 +333,9 @@ function showResults(scores, top3, bottom3, closestIdeology) {
     .map(
       (party) => `
         <div class="party-card opposition">
-            <img src="${party.logo}" alt="${party.name}" class="result-logo">
+            <div class="result-logo-wrapper">
+                <img src="${party.logo}" alt="${party.name}" class="result-logo-img" crossorigin="anonymous">
+            </div>
             <div class="party-name">${party.name}</div>
         </div>
     `,
@@ -313,7 +355,55 @@ function showResults(scores, top3, bottom3, closestIdeology) {
     )
     .join("");
 
+  // Gestione dell'interfaccia se stiamo guardando un link condiviso
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('r')) {
+    document.getElementById('share-link-btn').style.display = 'none';
+    
+    const restartBtn = document.getElementById('restart-test-btn');
+    restartBtn.innerText = "Fai il tuo Test Politico";
+    restartBtn.onclick = function() {
+      window.location.href = window.location.pathname; // Ricarica senza parametri
+    };
+  }
+
   saveState(true);
+}
+
+function copyShareLink() {
+  if (!window.currentScoresForSharing) return;
+
+  const s = window.currentScoresForSharing;
+  // Ordine fisso: economia, autorita, identita, nazione, giustizia, ambiente
+  // Arrotondiamo a 2 decimali per tenere il Base64 compatto
+  const scoresArray = [
+    s.economia.toFixed(2),
+    s.autorita.toFixed(2),
+    s.identita.toFixed(2),
+    s.nazione.toFixed(2),
+    s.giustizia.toFixed(2),
+    s.ambiente.toFixed(2)
+  ];
+  
+  const scoresString = scoresArray.join(',');
+  const base64Data = btoa(scoresString);
+  
+  const shareUrl = window.location.origin + window.location.pathname + "?r=" + base64Data;
+  
+  navigator.clipboard.writeText(shareUrl).then(() => {
+    const btn = document.getElementById('share-link-btn');
+    const originalHtml = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> Link Copiato!';
+    btn.style.backgroundColor = '#4caf50';
+    
+    setTimeout(() => {
+      btn.innerHTML = originalHtml;
+      btn.style.backgroundColor = '';
+    }, 2000);
+  }).catch(err => {
+    console.error('Errore nella copia del link: ', err);
+    alert("Impossibile copiare il link: " + shareUrl);
+  });
 }
 
 function toggleIdeologies() {
@@ -525,10 +615,20 @@ function drawExtraAxes(scores) {
 
 function downloadResults() {
   const resultsScreen = document.getElementById('results-screen');
-  const buttons = document.querySelectorAll('button, .numeric-scores-details');
+  const appContainer = document.getElementById('app-container');
+  // Nascondiamo i bottoni prima di scaricare
+  const buttonsToHide = document.querySelectorAll('#download-results-btn, #share-link-btn, #restart-test-btn, .numeric-scores-details');
   const iconsAndFlags = resultsScreen.querySelectorAll('img, svg, .fi');
 
-  buttons.forEach(b => b.style.display = 'none');
+  buttonsToHide.forEach(b => b.style.display = 'none');
+  
+  // Forza il layout desktop per ottimizzare lo spazio e l'aspect ratio
+  const oldMaxWidth = appContainer.style.maxWidth;
+  const oldWidth = appContainer.style.width;
+  
+  // Imposta temporaneamente la larghezza fissa del desktop
+  appContainer.style.maxWidth = '750px';
+  appContainer.style.width = '750px';
 
   const imageLoadPromises = Array.from(iconsAndFlags).map(el => {
     if (el.tagName === 'IMG') {
@@ -544,12 +644,13 @@ function downloadResults() {
 
   Promise.all(imageLoadPromises).then(() => {
     setTimeout(() => {
-      html2canvas(resultsScreen, {
+      html2canvas(appContainer, {
         scale: 2,
-        backgroundColor: "#f4f4f9",
+        backgroundColor: "#ffffff",
         logging: false,
         useCORS: true,
-        allowTaint: false
+        allowTaint: false,
+        windowWidth: 800 // Forza le media queries desktop
       }).then(originalCanvas => {
         const targetAspectRatio = 9 / 16;
         let targetWidth, targetHeight;
@@ -567,7 +668,7 @@ function downloadResults() {
         finalCanvas.width = targetWidth;
         finalCanvas.height = targetHeight;
         const ctx = finalCanvas.getContext('2d');
-        ctx.fillStyle = "#f4f4f9";
+        ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, targetWidth, targetHeight);
         const offsetX = (targetWidth - originalCanvas.width) / 2;
         const offsetY = (targetHeight - originalCanvas.height) / 2;
@@ -579,8 +680,17 @@ function downloadResults() {
         link.href = finalCanvas.toDataURL("image/png");
         link.click();
 
-        // ripristino bottoni
-        buttons.forEach(b => b.style.display = '');
+        // ripristino bottoni e stili
+        buttonsToHide.forEach(b => {
+          // Se è la modalità condivisa, non mostrare il bottone share
+          if (b.id === 'share-link-btn' && new URLSearchParams(window.location.search).has('r')) {
+            b.style.display = 'none';
+          } else {
+            b.style.display = '';
+          }
+        });
+        appContainer.style.maxWidth = oldMaxWidth;
+        appContainer.style.width = oldWidth;
       });
     }, 100);
   });
