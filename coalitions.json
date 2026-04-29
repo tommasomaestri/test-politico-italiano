@@ -1,0 +1,21 @@
+{
+  "Campo Largo": {
+    "color": "#ff0000",
+    "parties": [
+      "Partito Democratico",
+      "Movimento 5 Stelle",
+      "Alleanza Verdi-Sinistra",
+      "+Europa",
+      "Italia Viva"
+    ]
+  },
+  "Centrodestra": {
+    "color": "#0000ff",
+    "parties": [
+      "Fratelli d'Italia",
+      "Forza Italia",
+      "Lega",
+      "Noi Moderati"
+    ]
+  }
+}

@@ -53,19 +53,28 @@
 
         <div id="results-screen" class="screen">
             <h2>I Tuoi Risultati</h2>
-            
+
             <div id="user-ideology-container" style="text-align: center; margin: 25px 0;">
                 <h4 style="color: #666; margin-bottom: 5px; font-weight: normal;">La tua ideologia più affine:</h4>
-                <h2 id="user-ideology" style="color: #222; margin-top: 0; font-size: 2.2em; letter-spacing: -0.5px;">...</h2>
+                <h2 id="user-ideology" style="color: #222; margin-top: 0; font-size: 2.2em; letter-spacing: -0.5px;">...
+                </h2>
             </div>
 
             <div class="compass-container">
                 <h3>Bussola Politica</h3>
-                
+
                 <div class="switch-wrapper">
                     <span>Mostra Ideologie</span>
                     <label class="switch">
                         <input type="checkbox" id="toggle-ideologies" onchange="toggleIdeologies()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="switch-wrapper">
+                    <span>Mostra Coalizioni</span>
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-coalitions" onchange="toggleCoalitions()">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -86,7 +95,21 @@
                 </div>
 
                 <div class="compass-disclaimer" data-html2canvas-ignore="true">
-                    <i class="fa-solid fa-circle-info"></i> <strong>Nota metodologica:</strong> il posizionamento dei partiti e la mappatura delle aree ideologiche sul compasso bidimensionale hanno uno scopo puramente indicativo e divulgativo. La politica è una materia complessa che spesso sfugge alle semplificazioni geometriche. Le posizioni rappresentate sono stime basate sull'analisi di programmi elettorali, posizioni storiche e orientamenti generali, e non pretendono di avere valenza di verità assoluta.
+                    <i class="fa-solid fa-circle-info"></i> <strong>Nota metodologica:</strong> il posizionamento dei
+                    partiti e la mappatura delle aree ideologiche sul compasso bidimensionale hanno uno scopo puramente
+                    indicativo e divulgativo. La politica è una materia complessa che spesso sfugge alle semplificazioni
+                    geometriche. Le posizioni rappresentate sono stime basate sull'analisi di programmi elettorali,
+                    posizioni storiche e orientamenti generali, e non pretendono di avere valenza di verità assoluta.
+                </div>
+
+                <div id="barycenter-disclaimer" class="compass-disclaimer" style="display: none; margin-top: 10px;"
+                    data-html2canvas-ignore="true">
+                    <i class="fa-solid fa-scale-balanced"></i> <strong>Baricentro Coalizioni:</strong> i punti a forma
+                    di rombo che compaiono attivando la visuale coalizioni rappresentano il "baricentro politico" della
+                    coalizione. Questo punto è calcolato come media ponderata delle posizioni dei partiti membri, dove
+                    il peso di ciascun partito è proporzionale al suo consenso stimato (sondaggi). Ha uno scopo
+                    indicativo basato sul calcolo matematico, e non riflette necessariamente un programma di coalizione
+                    concordato. Il sondaggio utilizzato è Supermedia YouTrend/Agi del 23/04/2026.
                 </div>
             </div>
 

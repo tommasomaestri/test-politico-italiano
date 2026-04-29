@@ -4,6 +4,7 @@ let currentQuestionIndex = 0;
 
 let parties = [];
 let ideologies = [];
+let coalitions = {};
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -23,6 +24,11 @@ async function initApp() {
     const idRes = await fetch("ideologies.json");
     if (idRes.ok) {
         ideologies = await idRes.json();
+    }
+
+    const coalRes = await fetch("coalitions.json");
+    if (coalRes.ok) {
+        coalitions = await coalRes.json();
     }
 
     // Controllo se c'è il parametro di condivisione nell'URL
@@ -430,6 +436,36 @@ function toggleIdeologies() {
   });
 }
 
+function toggleCoalitions() {
+  const isChecked = document.getElementById("toggle-coalitions").checked;
+  const partiesOnCompass = document.querySelectorAll(".party-logo-compass");
+  const barycenters = document.querySelectorAll(".coalition-barycenter");
+  
+  partiesOnCompass.forEach(p => {
+      const partyName = p.getAttribute("data-party-name");
+      p.style.border = "";
+      p.style.boxShadow = "";
+      
+      if (isChecked && coalitions) {
+          for (const coalName in coalitions) {
+              if (coalitions[coalName].parties && coalitions[coalName].parties.includes(partyName)) {
+                  p.style.border = `3px solid ${coalitions[coalName].color}`;
+                  p.style.boxShadow = `0 0 8px ${coalitions[coalName].color}`;
+              }
+          }
+      }
+  });
+
+  barycenters.forEach(b => {
+      b.style.display = isChecked ? "block" : "none";
+  });
+
+  const disclaimer = document.getElementById("barycenter-disclaimer");
+  if (disclaimer) {
+      disclaimer.style.display = isChecked ? "block" : "none";
+  }
+}
+
 function drawCompass(userX, userY) {
   const canvas = document.getElementById("compass-canvas");
   const ctx = canvas.getContext("2d");
@@ -481,7 +517,7 @@ function drawCompass(userX, userY) {
     // scala centesimale: (valore + 100) / 200
     let px = ((party.axes.economia + 100) / 200) * 100;
     let py = (1 - ((party.axes.autorita + 100) / 200)) * 100;
-    overlay.innerHTML += `<img src="${party.logo}" class="party-logo-compass" title="${party.name}" style="left: ${px}%; top: ${py}%;">`;
+    overlay.innerHTML += `<img src="${party.logo}" class="party-logo-compass" data-party-name="${party.name}" title="${party.name}" style="left: ${px}%; top: ${py}%;">`;
   });
 
   if (ideologies && ideologies.length > 0) {
@@ -500,9 +536,48 @@ function drawCompass(userX, userY) {
       });
   }
 
+  // Disegna il baricentro delle coalizioni
+  if (coalitions) {
+      for (const coalName in coalitions) {
+          let totalWeight = 0;
+          let weightedEcon = 0;
+          let weightedAuth = 0;
+          
+          if (coalitions[coalName].parties) {
+              coalitions[coalName].parties.forEach(pName => {
+                  let partyObj = parties.find(p => p.name === pName);
+                  if (partyObj && partyObj.poll !== undefined) {
+                      let weight = partyObj.poll;
+                      totalWeight += weight;
+                      weightedEcon += partyObj.axes.economia * weight;
+                      weightedAuth += partyObj.axes.autorita * weight;
+                  }
+              });
+          }
+          
+          if (totalWeight > 0) {
+              let avgEcon = weightedEcon / totalWeight;
+              let avgAuth = weightedAuth / totalWeight;
+              
+              let left = ((avgEcon + 100) / 200) * 100;
+              let top = (1 - ((avgAuth + 100) / 200)) * 100;
+              
+              overlay.innerHTML += `<div class="coalition-barycenter" data-coalition="${coalName}" title="Baricentro ${coalName}" style="left: ${left}%; top: ${top}%; background-color: ${coalitions[coalName].color};"></div>`;
+          }
+      }
+  }
+
   let uX = ((userX + 100) / 200) * 100;
   let uY = (1 - ((userY + 100) / 200)) * 100;
   overlay.innerHTML += `<div class="user-dot-compass" style="left: ${uX}%; top: ${uY}%;"></div>`;
+
+  // Restore switch states if they were checked
+  if (document.getElementById("toggle-ideologies") && document.getElementById("toggle-ideologies").checked) {
+      toggleIdeologies();
+  }
+  if (document.getElementById("toggle-coalitions") && document.getElementById("toggle-coalitions").checked) {
+      toggleCoalitions();
+  }
 }
 
 function drawExtraAxes(scores) {
