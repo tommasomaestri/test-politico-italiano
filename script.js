@@ -369,11 +369,12 @@ function showResults(scores, top3, bottom3, closestIdeology) {
     const restartBtn = document.getElementById('restart-test-btn');
     restartBtn.innerText = "Fai il tuo Test Politico";
     restartBtn.onclick = function() {
+      sessionStorage.removeItem("politicalTestState");
       window.location.href = window.location.pathname; // Ricarica senza parametri
     };
+  } else {
+    saveState(true);
   }
-
-  saveState(true);
 }
 
 function copyShareLink() {
