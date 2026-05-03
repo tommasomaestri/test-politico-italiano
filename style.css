@@ -350,6 +350,7 @@ button:hover {
     box-shadow: 0 0 4px rgba(0,0,0,0.4);
     z-index: 10;
     transition: transform 0.2s; 
+    pointer-events: auto;
 }
 .party-logo-compass:hover {
     transform: translate(-50%, -50%) scale(1.5);
@@ -470,6 +471,7 @@ input:checked + .slider:before {
     z-index: 25;
     display: none;
     transition: opacity 0.2s;
+    pointer-events: auto;
 }
 
 .party-axis-group {
@@ -618,7 +620,17 @@ input:checked + .slider:before {
     background: #fff;
     padding: 15px;
     border-radius: 10px;
-    border: 1px solid #eee;
+    border: 2px solid #eee; /* Aumentato per coerenza con le classi closest/farthest */
+}
+
+.results-column.closest {
+    border-color: #81c784; /* Verde per i più affini */
+    box-shadow: 0 4px 10px rgba(129, 199, 132, 0.15);
+}
+
+.results-column.farthest {
+    border-color: #e57373; /* Rosso per i più lontani */
+    box-shadow: 0 4px 10px rgba(229, 115, 115, 0.15);
 }
 
 .party-list {
@@ -635,12 +647,14 @@ input:checked + .slider:before {
     border-bottom: 1px solid #f9f9f9;
 }
 
-.party-card.winner .result-logo-wrapper {
+.party-card.winner .result-logo-wrapper,
+.party-card.loser .result-logo-wrapper {
     width: 120px; 
     height: 120px;
 }
 
-.party-card.winner .party-name {
+.party-card.winner .party-name,
+.party-card.loser .party-name {
     font-size: 1.4em; 
 }
 

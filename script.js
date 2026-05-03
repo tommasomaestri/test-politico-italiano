@@ -23,12 +23,12 @@ async function initApp() {
 
     const idRes = await fetch("ideologies.json");
     if (idRes.ok) {
-        ideologies = await idRes.json();
+      ideologies = await idRes.json();
     }
 
     const coalRes = await fetch("coalitions.json");
     if (coalRes.ok) {
-        coalitions = await coalRes.json();
+      coalitions = await coalRes.json();
     }
 
     // Controllo se c'è il parametro di condivisione nell'URL
@@ -39,7 +39,7 @@ async function initApp() {
       try {
         const decodedString = atob(sharedData);
         const scoresArray = decodedString.split(',').map(Number);
-        
+
         if (scoresArray.length === 6 && !scoresArray.some(isNaN)) {
           // Ricostruisci i punteggi normalizzati
           const sharedScores = {
@@ -88,7 +88,7 @@ async function initApp() {
       btnQuick.disabled = false;
       btnQuick.innerText = "Test Rapido (30 domande)";
       btnAdvanced.disabled = false;
-      btnAdvanced.innerText = "Test Preciso (Completo)";
+      btnAdvanced.innerText = "Test Preciso (84 domande)";
     }
   } catch (error) {
     console.error("Errore nel caricamento:", error);
@@ -265,15 +265,25 @@ function processScores(normalizedScores) {
   // Pesi aggiornati: maggior rilevanza agli assi principali e identità
   const weights = { economia: 5.0, autorita: 5.0, identita: 2.0, nazione: 0.5, giustizia: 0.5, ambiente: 0.5 };
 
+  // Calcolo distanza massima possibile per definire la percentuale
+  let maxPossibleSumOfSquares = 0;
+  for (let axis in weights) {
+    maxPossibleSumOfSquares += (200 * 200) * (weights[axis] || 1.0);
+  }
+  const maxPossibleDistance = Math.sqrt(maxPossibleSumOfSquares);
+
   let partyDistances = parties.map(party => {
     let weightedSumOfSquares = 0;
     for (let axis in normalizedScores) {
       let diff = normalizedScores[axis] - party.axes[axis];
       weightedSumOfSquares += (diff * diff) * (weights[axis] || 1.0);
     }
+    let distance = Math.sqrt(weightedSumOfSquares);
+    let affinityPercent = Math.max(0, Math.round(100 * (1 - (distance / maxPossibleDistance))));
     return {
       ...party,
-      distance: Math.sqrt(weightedSumOfSquares)
+      distance: distance,
+      affinity: affinityPercent
     };
   });
 
@@ -285,14 +295,14 @@ function processScores(normalizedScores) {
   // Calcolo Ideologia (Aree)
   let closestIdeology = null;
   if (ideologies && ideologies.length > 0) {
-      ideologies.forEach(ideo => {
-          if (ideo.area) {
-              if (normalizedScores.economia >= ideo.area.eMin && normalizedScores.economia <= ideo.area.eMax &&
-                  normalizedScores.autorita >= ideo.area.aMin && normalizedScores.autorita <= ideo.area.aMax) {
-                  closestIdeology = ideo;
-              }
-          }
-      });
+    ideologies.forEach(ideo => {
+      if (ideo.area) {
+        if (normalizedScores.economia >= ideo.area.eMin && normalizedScores.economia <= ideo.area.eMax &&
+          normalizedScores.autorita >= ideo.area.aMin && normalizedScores.autorita <= ideo.area.aMax) {
+          closestIdeology = ideo;
+        }
+      }
+    });
   }
 
   showResults(normalizedScores, top3, bottom3, closestIdeology);
@@ -303,15 +313,15 @@ window.currentScoresForSharing = null;
 
 function showResults(scores, top3, bottom3, closestIdeology) {
   window.currentScoresForSharing = scores; // Salva per la funzione di copia link
-  
+
   document.getElementById("start-screen").classList.remove("active");
   document.getElementById("quiz-screen").classList.remove("active");
   document.getElementById("results-screen").classList.add("active");
 
   if (closestIdeology) {
-      document.getElementById("user-ideology").innerText = closestIdeology.name;
+    document.getElementById("user-ideology").innerText = closestIdeology.name;
   } else {
-      document.getElementById("user-ideology-container").style.display = "none";
+    document.getElementById("user-ideology-container").style.display = "none";
   }
 
   drawCompass(scores.economia, scores.autorita);
@@ -327,7 +337,7 @@ function showResults(scores, top3, bottom3, closestIdeology) {
                 <img src="${party.logo}" alt="${party.name}" class="result-logo-img" crossorigin="anonymous">
             </div>
             <div class="party-name">${party.name}</div>
-            <div class="match-percent">${Math.max(0, Math.round(100 - (party.distance / 10)))}% affinità</div>
+            <div class="match-percent">${party.affinity}% affinità</div>
         </div>
     `,
     )
@@ -337,12 +347,13 @@ function showResults(scores, top3, bottom3, closestIdeology) {
   const bottomContainer = document.getElementById("farthest-party-container");
   bottomContainer.innerHTML = bottom3
     .map(
-      (party) => `
-        <div class="party-card opposition">
+      (party, index) => `
+        <div class="party-card opposition ${index === 0 ? "loser" : ""}">
             <div class="result-logo-wrapper">
                 <img src="${party.logo}" alt="${party.name}" class="result-logo-img" crossorigin="anonymous">
             </div>
             <div class="party-name">${party.name}</div>
+            <div class="match-percent">${party.affinity}% affinità</div>
         </div>
     `,
     )
@@ -365,10 +376,10 @@ function showResults(scores, top3, bottom3, closestIdeology) {
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.has('r')) {
     document.getElementById('share-link-btn').style.display = 'none';
-    
+
     const restartBtn = document.getElementById('restart-test-btn');
-    restartBtn.innerText = "Fai il tuo Test Politico";
-    restartBtn.onclick = function() {
+    restartBtn.innerText = "Fai il test";
+    restartBtn.onclick = function () {
       sessionStorage.removeItem("politicalTestState");
       window.location.href = window.location.pathname; // Ricarica senza parametri
     };
@@ -391,18 +402,18 @@ function copyShareLink() {
     s.giustizia.toFixed(2),
     s.ambiente.toFixed(2)
   ];
-  
+
   const scoresString = scoresArray.join(',');
   const base64Data = btoa(scoresString);
-  
+
   const shareUrl = window.location.origin + window.location.pathname + "?r=" + base64Data;
-  
+
   navigator.clipboard.writeText(shareUrl).then(() => {
     const btn = document.getElementById('share-link-btn');
     const originalHtml = btn.innerHTML;
     btn.innerHTML = '<i class="fa-solid fa-check"></i> Link Copiato!';
     btn.style.backgroundColor = '#4caf50';
-    
+
     setTimeout(() => {
       btn.innerHTML = originalHtml;
       btn.style.backgroundColor = '';
@@ -417,23 +428,23 @@ function toggleIdeologies() {
   const isChecked = document.getElementById("toggle-ideologies").checked;
   const labels = document.querySelectorAll(".ideology-area-compass");
   const partiesOnCompass = document.querySelectorAll(".party-logo-compass");
-  
+
   labels.forEach(l => {
-      if (isChecked) {
-          l.classList.add("active");
-      } else {
-          l.classList.remove("active");
-      }
+    if (isChecked) {
+      l.classList.add("active");
+    } else {
+      l.classList.remove("active");
+    }
   });
 
   partiesOnCompass.forEach(p => {
-      if (isChecked) {
-          p.style.opacity = "0.2";
-          p.style.zIndex = "1";
-      } else {
-          p.style.opacity = "";
-          p.style.zIndex = "";
-      }
+    if (isChecked) {
+      p.style.opacity = "0.2";
+      p.style.zIndex = "1";
+    } else {
+      p.style.opacity = "";
+      p.style.zIndex = "";
+    }
   });
 }
 
@@ -441,29 +452,29 @@ function toggleCoalitions() {
   const isChecked = document.getElementById("toggle-coalitions").checked;
   const partiesOnCompass = document.querySelectorAll(".party-logo-compass");
   const barycenters = document.querySelectorAll(".coalition-barycenter");
-  
+
   partiesOnCompass.forEach(p => {
-      const partyName = p.getAttribute("data-party-name");
-      p.style.border = "";
-      p.style.boxShadow = "";
-      
-      if (isChecked && coalitions) {
-          for (const coalName in coalitions) {
-              if (coalitions[coalName].parties && coalitions[coalName].parties.includes(partyName)) {
-                  p.style.border = `3px solid ${coalitions[coalName].color}`;
-                  p.style.boxShadow = `0 0 8px ${coalitions[coalName].color}`;
-              }
-          }
+    const partyName = p.getAttribute("data-party-name");
+    p.style.border = "";
+    p.style.boxShadow = "";
+
+    if (isChecked && coalitions) {
+      for (const coalName in coalitions) {
+        if (coalitions[coalName].parties && coalitions[coalName].parties.includes(partyName)) {
+          p.style.border = `3px solid ${coalitions[coalName].color}`;
+          p.style.boxShadow = `0 0 8px ${coalitions[coalName].color}`;
+        }
       }
+    }
   });
 
   barycenters.forEach(b => {
-      b.style.display = isChecked ? "block" : "none";
+    b.style.display = isChecked ? "block" : "none";
   });
 
   const disclaimer = document.getElementById("barycenter-disclaimer");
   if (disclaimer) {
-      disclaimer.style.display = isChecked ? "block" : "none";
+    disclaimer.style.display = isChecked ? "block" : "none";
   }
 }
 
@@ -522,50 +533,50 @@ function drawCompass(userX, userY) {
   });
 
   if (ideologies && ideologies.length > 0) {
-      ideologies.forEach(ideo => {
-          if (ideo.area) {
-              let left = ((ideo.area.eMin + 100) / 200) * 100;
-              let width = ((ideo.area.eMax - ideo.area.eMin) / 200) * 100;
-              // Per l'asse Y, aMax corrisponde al 'top' (perché l'asse è invertito)
-              let top = (1 - ((ideo.area.aMax + 100) / 200)) * 100;
-              let height = ((ideo.area.aMax - ideo.area.aMin) / 200) * 100;
-              
-              overlay.innerHTML += `<div class="ideology-area-compass" style="left: ${left}%; top: ${top}%; width: ${width}%; height: ${height}%; background-color: ${ideo.color};">
+    ideologies.forEach(ideo => {
+      if (ideo.area) {
+        let left = ((ideo.area.eMin + 100) / 200) * 100;
+        let width = ((ideo.area.eMax - ideo.area.eMin) / 200) * 100;
+        // Per l'asse Y, aMax corrisponde al 'top' (perché l'asse è invertito)
+        let top = (1 - ((ideo.area.aMax + 100) / 200)) * 100;
+        let height = ((ideo.area.aMax - ideo.area.aMin) / 200) * 100;
+
+        overlay.innerHTML += `<div class="ideology-area-compass" style="left: ${left}%; top: ${top}%; width: ${width}%; height: ${height}%; background-color: ${ideo.color};">
                   <span class="ideology-area-label">${ideo.name}</span>
               </div>`;
-          }
-      });
+      }
+    });
   }
 
   // Disegna il baricentro delle coalizioni
   if (coalitions) {
-      for (const coalName in coalitions) {
-          let totalWeight = 0;
-          let weightedEcon = 0;
-          let weightedAuth = 0;
-          
-          if (coalitions[coalName].parties) {
-              coalitions[coalName].parties.forEach(pName => {
-                  let partyObj = parties.find(p => p.name === pName);
-                  if (partyObj && partyObj.poll !== undefined) {
-                      let weight = partyObj.poll;
-                      totalWeight += weight;
-                      weightedEcon += partyObj.axes.economia * weight;
-                      weightedAuth += partyObj.axes.autorita * weight;
-                  }
-              });
+    for (const coalName in coalitions) {
+      let totalWeight = 0;
+      let weightedEcon = 0;
+      let weightedAuth = 0;
+
+      if (coalitions[coalName].parties) {
+        coalitions[coalName].parties.forEach(pName => {
+          let partyObj = parties.find(p => p.name === pName);
+          if (partyObj && partyObj.poll !== undefined) {
+            let weight = partyObj.poll;
+            totalWeight += weight;
+            weightedEcon += partyObj.axes.economia * weight;
+            weightedAuth += partyObj.axes.autorita * weight;
           }
-          
-          if (totalWeight > 0) {
-              let avgEcon = weightedEcon / totalWeight;
-              let avgAuth = weightedAuth / totalWeight;
-              
-              let left = ((avgEcon + 100) / 200) * 100;
-              let top = (1 - ((avgAuth + 100) / 200)) * 100;
-              
-              overlay.innerHTML += `<div class="coalition-barycenter" data-coalition="${coalName}" title="Baricentro ${coalName}" style="left: ${left}%; top: ${top}%; background-color: ${coalitions[coalName].color};"></div>`;
-          }
+        });
       }
+
+      if (totalWeight > 0) {
+        let avgEcon = weightedEcon / totalWeight;
+        let avgAuth = weightedAuth / totalWeight;
+
+        let left = ((avgEcon + 100) / 200) * 100;
+        let top = (1 - ((avgAuth + 100) / 200)) * 100;
+
+        overlay.innerHTML += `<div class="coalition-barycenter" data-coalition="${coalName}" title="Baricentro ${coalName}" style="left: ${left}%; top: ${top}%; background-color: ${coalitions[coalName].color};"></div>`;
+      }
+    }
   }
 
   let uX = ((userX + 100) / 200) * 100;
@@ -574,10 +585,10 @@ function drawCompass(userX, userY) {
 
   // Restore switch states if they were checked
   if (document.getElementById("toggle-ideologies") && document.getElementById("toggle-ideologies").checked) {
-      toggleIdeologies();
+    toggleIdeologies();
   }
   if (document.getElementById("toggle-coalitions") && document.getElementById("toggle-coalitions").checked) {
-      toggleCoalitions();
+    toggleCoalitions();
   }
 }
 
@@ -639,7 +650,7 @@ function drawExtraAxes(scores) {
       let pScore = party.axes[axis.key];
       let pPercent = ((pScore + 100) / 200) * 100;
       if (!partyGroups[pPercent]) {
-          partyGroups[pPercent] = [];
+        partyGroups[pPercent] = [];
       }
       partyGroups[pPercent].push(party);
     });
@@ -648,16 +659,16 @@ function drawExtraAxes(scores) {
     for (let pPercent in partyGroups) {
       let group = partyGroups[pPercent];
       let combinedTitle = group.map(p => p.name).join(", ");
-      
+
       let tooltipContent = "";
       if (group.length > 1) {
-          // Se ci sono più partiti, mostriamo tutti i loro loghi nel tooltip
-          tooltipContent = group.map(p => `<img src="${p.logo}" class="tooltip-logo" title="${p.name}">`).join("");
+        // Se ci sono più partiti, mostriamo tutti i loro loghi nel tooltip
+        tooltipContent = group.map(p => `<img src="${p.logo}" class="tooltip-logo" title="${p.name}">`).join("");
       } else {
-          // Se c'è un solo partito, mostriamo semplicemente il nome
-          tooltipContent = `<span class="tooltip-text">${group[0].name}</span>`;
+        // Se c'è un solo partito, mostriamo semplicemente il nome
+        tooltipContent = `<span class="tooltip-text">${group[0].name}</span>`;
       }
-      
+
       let coverParty = group[group.length - 1]; // Usiamo l'ultimo aggiunto come cover, o il primo, è uguale. Scegliamo il primo:
       coverParty = group[0];
 
@@ -697,11 +708,11 @@ function downloadResults() {
   const iconsAndFlags = resultsScreen.querySelectorAll('img, svg, .fi');
 
   buttonsToHide.forEach(b => b.style.display = 'none');
-  
+
   // Forza il layout desktop per ottimizzare lo spazio e l'aspect ratio
   const oldMaxWidth = appContainer.style.maxWidth;
   const oldWidth = appContainer.style.width;
-  
+
   // Imposta temporaneamente la larghezza fissa del desktop
   appContainer.style.maxWidth = '750px';
   appContainer.style.width = '750px';
@@ -752,7 +763,7 @@ function downloadResults() {
 
         // download immagine
         const link = document.createElement('a');
-        link.download = 'Mio_Test_Politico_Italia.png';
+        link.download = 'political-test-results.png';
         link.href = finalCanvas.toDataURL("image/png");
         link.click();
 
