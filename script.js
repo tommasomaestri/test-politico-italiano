@@ -750,7 +750,6 @@ function downloadResults() {
         logging: true,
         useCORS: true,
         allowTaint: false,
-        foreignObjectRendering: true, // Risolve bug noti con gli SVG su html2canvas
         windowWidth: 800 // Forza le media queries desktop
       }).then(originalCanvas => {
         const targetAspectRatio = 9 / 16;
