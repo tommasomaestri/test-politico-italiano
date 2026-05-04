@@ -724,11 +724,19 @@ function downloadResults() {
 
   const imageLoadPromises = Array.from(iconsAndFlags).map(el => {
     if (el.tagName === 'IMG') {
-      return new Promise(resolve => {
-        if (el.complete) resolve();
-        el.onload = resolve;
-        el.onerror = resolve;
-        el.crossOrigin = "Anonymous";
+      return new Promise((resolve) => {
+        // Se è già caricata ed ha altezza
+        if (el.complete && el.naturalHeight !== 0) {
+          resolve();
+          return;
+        }
+
+        // Forza il caricamento
+        const img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.onload = resolve;
+        img.onerror = resolve;
+        img.src = el.src;
       });
     }
     return Promise.resolve();
@@ -739,37 +747,16 @@ function downloadResults() {
       html2canvas(appContainer, {
         scale: 2,
         backgroundColor: "#ffffff",
-        logging: false,
+        logging: true,
         useCORS: true,
         allowTaint: false,
+        foreignObjectRendering: true, // Risolve bug noti con gli SVG su html2canvas
         windowWidth: 800 // Forza le media queries desktop
       }).then(originalCanvas => {
-        const targetAspectRatio = 9 / 16;
-        let targetWidth, targetHeight;
-        const originalRatio = originalCanvas.width / originalCanvas.height;
-
-        if (originalRatio > targetAspectRatio) {
-          targetWidth = originalCanvas.width;
-          targetHeight = targetWidth / targetAspectRatio;
-        } else {
-          targetHeight = originalCanvas.height;
-          targetWidth = targetHeight * targetAspectRatio;
-        }
-
-        const finalCanvas = document.createElement('canvas');
-        finalCanvas.width = targetWidth;
-        finalCanvas.height = targetHeight;
-        const ctx = finalCanvas.getContext('2d');
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, targetWidth, targetHeight);
-        const offsetX = (targetWidth - originalCanvas.width) / 2;
-        const offsetY = (targetHeight - originalCanvas.height) / 2;
-        ctx.drawImage(originalCanvas, offsetX, offsetY);
-
         // download immagine
         const link = document.createElement('a');
         link.download = 'political-test-results.png';
-        link.href = finalCanvas.toDataURL("image/png");
+        link.href = originalCanvas.toDataURL("image/png");
         link.click();
 
         // ripristino bottoni e stili
