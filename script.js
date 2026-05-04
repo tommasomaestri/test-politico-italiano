@@ -83,12 +83,14 @@ async function initApp() {
     // Comportamento standard se non c'è nessun salvataggio
     const btnQuick = document.getElementById("start-quick-btn");
     const btnAdvanced = document.getElementById("start-advanced-btn");
+    const loadingStart = document.getElementById("loading-start");
+    const startButtons = document.querySelector(".start-buttons");
 
     if (btnQuick && btnAdvanced) {
+      if (loadingStart) loadingStart.style.display = "none";
+      if (startButtons) startButtons.style.display = "flex";
       btnQuick.disabled = false;
-      btnQuick.innerText = "Test Rapido (30 domande)";
       btnAdvanced.disabled = false;
-      btnAdvanced.innerText = "Test Preciso (84 domande)";
     }
   } catch (error) {
     console.error("Errore nel caricamento:", error);
@@ -100,15 +102,14 @@ window.onload = initApp;
 async function startTest(isAdvanced = false) {
   const btnQuick = document.getElementById("start-quick-btn");
   const btnAdvanced = document.getElementById("start-advanced-btn");
+  const loadingStart = document.getElementById("loading-start");
+  const startButtons = document.querySelector(".start-buttons");
 
   if (btnQuick && btnAdvanced) {
     btnQuick.disabled = true;
     btnAdvanced.disabled = true;
-    if (isAdvanced) {
-      btnAdvanced.innerText = "Caricamento...";
-    } else {
-      btnQuick.innerText = "Caricamento...";
-    }
+    if (loadingStart) loadingStart.style.display = "block";
+    if (startButtons) startButtons.style.display = "none";
   }
 
   try {
@@ -139,9 +140,11 @@ async function startTest(isAdvanced = false) {
     alert("Errore nel caricamento delle domande. Riprova.");
     if (btnQuick && btnAdvanced) {
       btnQuick.disabled = false;
-      btnQuick.innerText = "Test Rapido (30 domande)";
       btnAdvanced.disabled = false;
-      btnAdvanced.innerText = "Test Preciso (Completo)";
+      const loadingStart = document.getElementById("loading-start");
+      const startButtons = document.querySelector(".start-buttons");
+      if (loadingStart) loadingStart.style.display = "none";
+      if (startButtons) startButtons.style.display = "flex";
     }
   }
 }
@@ -227,11 +230,13 @@ function goPrevious() {
 
       const btnQuick = document.getElementById("start-quick-btn");
       const btnAdvanced = document.getElementById("start-advanced-btn");
+      const loadingStart = document.getElementById("loading-start");
+      const startButtons = document.querySelector(".start-buttons");
       if (btnQuick && btnAdvanced) {
         btnQuick.disabled = false;
-        btnQuick.innerText = "Test Rapido (30 domande)";
         btnAdvanced.disabled = false;
-        btnAdvanced.innerText = "Test Preciso (Completo)";
+        if (loadingStart) loadingStart.style.display = "none";
+        if (startButtons) startButtons.style.display = "flex";
       }
     }
   }

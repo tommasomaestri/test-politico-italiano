@@ -18,9 +18,25 @@
         <div id="start-screen" class="screen active">
             <h1>Scopri la tua posizione politica</h1>
             <p>Rispondi alle domande per scoprire dove ti collochi nel panorama italiano.</p>
-            <div class="start-buttons">
-                <button id="start-quick-btn" onclick="startTest(false)" disabled>Caricamento...</button>
-                <button id="start-advanced-btn" onclick="startTest(true)" disabled>Caricamento...</button>
+
+            <div id="loading-start" style="text-align: center; margin-top: 30px; font-weight: bold; color: #666;">
+                <i class="fa-solid fa-spinner fa-spin"></i> Caricamento in corso...
+            </div>
+
+            <div class="start-buttons" style="display: none;">
+                <button id="start-advanced-btn" class="primary-test-btn" onclick="startTest(true)" disabled>
+                    <div class="badge-recommended"><i class="fa-solid fa-star"></i> Consigliato</div>
+                    <span class="btn-title">Fai il test</span>
+                    <span class="btn-subtitle">~ 10 minuti • Risultato preciso</span>
+                    <span class="btn-autosave"><i class="fa-solid fa-floppy-disk"></i> I progressi si salvano: riprendi quando vuoi</span>
+                </button>
+
+                <div class="alternative-divider">In alternativa...</div>
+
+                <button id="start-quick-btn" class="secondary-test-btn" onclick="startTest(false)" disabled>
+                    <span class="btn-title">Test Rapido</span>
+                    <span class="btn-subtitle">~ 4 minuti • Risultato molto approssimativo</span>
+                </button>
             </div>
         </div>
 
