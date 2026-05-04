@@ -1,7 +1,7 @@
 [
   {
     "name": "Futuro Nazionale",
-    "logo": "img/fn.svg",
+    "logo": "img/fn.png",
     "poll": 3.5,
     "axes": {
       "economia": 40,
@@ -14,7 +14,7 @@
   },
   {
     "name": "Fratelli d'Italia",
-    "logo": "img/fdi.svg",
+    "logo": "img/fdi.png",
     "poll": 28.2,
     "axes": {
       "economia": 35,
@@ -79,7 +79,7 @@
   },
   {
     "name": "Italia Viva",
-    "logo": "img/iv.svg",
+    "logo": "img/iv.png",
     "poll": 2.6,
     "axes": {
       "economia": 25,
