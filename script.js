@@ -781,12 +781,15 @@ function downloadResults() {
                 navigator.share({
                     title: 'Test Politico',
                     files: [file]
+                }).then(() => {
+                    showToast('<i class="fa-solid fa-circle-check"></i> Immagine condivisa!');
                 }).catch(err => console.log("Share failed:", err));
             } else {
                 const link = document.createElement('a');
                 link.download = 'political-test-results.png';
                 link.href = finalCanvas.toDataURL("image/png");
                 link.click();
+                showToast('<i class="fa-solid fa-download"></i> Immagine scaricata!');
             }
         }, 'image/png');
 
@@ -819,4 +822,28 @@ function saveState(isFinished = false) {
     isFinished: isFinished,
   };
   sessionStorage.setItem("politicalTestState", JSON.stringify(state));
+}
+
+function showToast(htmlContent) {
+  let toast = document.getElementById("toast-notification");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast-notification";
+    toast.className = "toast-notification";
+    document.body.appendChild(toast);
+  }
+  
+  toast.innerHTML = htmlContent;
+  
+  toast.classList.remove("show");
+  void toast.offsetWidth; // Forza il reflow
+  toast.classList.add("show");
+  
+  if (window.toastTimeout) {
+      clearTimeout(window.toastTimeout);
+  }
+  
+  window.toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
 }

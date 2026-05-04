@@ -927,3 +927,56 @@ input:checked+.slider:before {
     font-weight: bold;
     color: #2e7d32;
 }
+
+/* Floating button on mobile only */
+@media (max-width: 600px) {
+    body {
+        padding-bottom: 80px; /* Spazio per non coprire l'ultimo bottone */
+    }
+
+    #download-results-btn.floating-mobile-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        padding: 15px 35px;
+        border-radius: 50px;
+        z-index: 1000;
+        background-color: #2c3e50;
+        color: white;
+        border: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+    }
+
+    #download-results-btn.floating-mobile-btn:hover {
+        background-color: #1a252f;
+    }
+}
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    top: -100px; /* Hidden above the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2e7d32; /* Verde successo */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+}
+
+.toast-notification.show {
+    top: 30px; /* Slides down from the top */
+    opacity: 1;
+}
