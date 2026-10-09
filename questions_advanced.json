@@ -430,5 +430,29 @@
     "con": "I costi dell'alta velocità sono enormi e i benefici si concentrano nelle aree già più sviluppate e nei viaggiatori più abbienti. Lo stesso investimento su trasporto locale, pendolari e connessioni capillari raggiungerebbe molte più persone.",
     "axis": "ambiente",
     "multiplier": -1
+  },
+  {
+    "id": "ID_REL",
+    "text": "Le religioni tradizionali sono un costrutto superato che rallenta il progresso morale e scientifico della società.",
+    "pro": "Le religioni dogmatiche storicamente hanno spesso ostacolato i diritti civili e le scoperte scientifiche. L'etica non necessita di precetti religiosi.",
+    "con": "La religione fornisce un senso di comunità, valori condivisi e supporto spirituale essenziale per molti. Il suo ruolo sociale è storicamente fondamentale.",
+    "axis": "identita",
+    "multiplier": -1
+  },
+  {
+    "id": "AM_ANI",
+    "text": "L'allevamento per il consumo di carne andrebbe progressivamente abolito per motivi etici e ambientali.",
+    "pro": "L'industria della carne è tra i maggiori responsabili del cambiamento climatico e comporta sofferenze animali. Una dieta vegetale è più sostenibile.",
+    "con": "La carne fa parte dell'evoluzione e della dieta umana, ed è un pilastro economico fondamentale. Regolamentare gli allevamenti è meglio dell'abolizione.",
+    "axis": "ambiente",
+    "multiplier": -1
+  },
+  {
+    "id": "EC_COM",
+    "text": "Il sistema capitalista è intrinsecamente ingiusto e i grandi mezzi di produzione dovrebbero essere collettivizzati.",
+    "pro": "Il capitalismo genera inevitabilmente disuguaglianze estreme e sfruttamento. L'economia collettiva garantirebbe vera uguaglianza.",
+    "con": "Il libero mercato, pur imperfetto, produce più ricchezza e innovazione delle economie pianificate, le quali storicamente hanno fallito.",
+    "axis": "economia",
+    "multiplier": -1
   }
 ]

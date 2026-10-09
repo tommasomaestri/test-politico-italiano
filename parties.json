@@ -2,7 +2,7 @@
   {
     "name": "Futuro Nazionale",
     "logo": "img/fn.png",
-    "poll": 3.5,
+    "poll": 7.8,
     "axes": {
       "economia": 40,
       "autorita": 80,
@@ -15,7 +15,7 @@
   {
     "name": "Fratelli d'Italia",
     "logo": "img/fdi.png",
-    "poll": 28.2,
+    "poll": 25.4,
     "axes": {
       "economia": 35,
       "autorita": 52,
@@ -28,7 +28,7 @@
   {
     "name": "Lega",
     "logo": "img/lega.png",
-    "poll": 7.3,
+    "poll": 5,
     "axes": {
       "economia": 43,
       "autorita": 65,
@@ -41,7 +41,7 @@
   {
     "name": "Forza Italia",
     "logo": "img/fi.png",
-    "poll": 8.3,
+    "poll": 7.2,
     "axes": {
       "economia": 48,
       "autorita": 15,
@@ -54,7 +54,7 @@
   {
     "name": "Noi Moderati",
     "logo": "img/nm.png",
-    "poll": 1.1,
+    "poll": 1,
     "axes": {
       "economia": 35,
       "autorita": 20,
@@ -65,14 +65,40 @@
     }
   },
   {
-    "name": "Azione",
-    "logo": "img/azione.png",
-    "poll": 3,
+    "name": "Partito Liberal-Democratico",
+    "logo": "img/pld.png",
+    "poll": 0.9,
+    "axes": {
+      "economia": 65,
+      "autorita": -15,
+      "identita": -40,
+      "nazione": -70,
+      "giustizia": 15,
+      "ambiente": 10
+    }
+  },
+  {
+    "name": "ORA!",
+    "logo": "img/ora.png",
+    "poll": 0.8,
     "axes": {
       "economia": 35,
       "autorita": -10,
+      "identita": -50,
+      "nazione": -75,
+      "giustizia": 5,
+      "ambiente": -5
+    }
+  },
+  {
+    "name": "Azione",
+    "logo": "img/azione.png",
+    "poll": 2.8,
+    "axes": {
+      "economia": 30,
+      "autorita": -10,
       "identita": -45,
-      "nazione": -80,
+      "nazione": -85,
       "giustizia": 15,
       "ambiente": 5
     }
@@ -80,7 +106,7 @@
   {
     "name": "Italia Viva",
     "logo": "img/iv.png",
-    "poll": 2.6,
+    "poll": 1.9,
     "axes": {
       "economia": 25,
       "autorita": -15,
@@ -93,7 +119,7 @@
   {
     "name": "+Europa",
     "logo": "img/+e.jpg",
-    "poll": 1.5,
+    "poll": 1.2,
     "axes": {
       "economia": 15,
       "autorita": -45,
@@ -106,9 +132,9 @@
   {
     "name": "Partito Democratico",
     "logo": "img/pd.png",
-    "poll": 22.4,
+    "poll": 21.2,
     "axes": {
-      "economia": -11,
+      "economia": -15,
       "autorita": -15,
       "identita": -60,
       "nazione": -60,
@@ -119,9 +145,9 @@
   {
     "name": "Movimento 5 Stelle",
     "logo": "img/m5s.png",
-    "poll": 12.8,
+    "poll": 12.3,
     "axes": {
-      "economia": -40,
+      "economia": -35,
       "autorita": -5,
       "identita": -50,
       "nazione": -25,
@@ -132,10 +158,10 @@
   {
     "name": "Alleanza Verdi-Sinistra",
     "logo": "img/avs.png",
-    "poll": 6.2,
+    "poll": 6.7,
     "axes": {
-      "economia": -55,
-      "autorita": -40,
+      "economia": -45,
+      "autorita": -37,
       "identita": -90,
       "nazione": -70,
       "giustizia": -75,
@@ -148,10 +174,23 @@
     "poll": 0.9,
     "axes": {
       "economia": -80,
-      "autorita": -40,
+      "autorita": -45,
       "identita": -85,
       "nazione": -45,
       "giustizia": -85,
+      "ambiente": -75
+    }
+  },
+  {
+    "name": "Rifondazione Comunista",
+    "logo": "img/rc.png",
+    "poll": 0.6,
+    "axes": {
+      "economia": -70,
+      "autorita": -40,
+      "identita": -80,
+      "nazione": -55,
+      "giustizia": -80,
       "ambiente": -75
     }
   }

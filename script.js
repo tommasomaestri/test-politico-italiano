@@ -31,6 +31,8 @@ async function initApp() {
       coalitions = await coalRes.json();
     }
 
+
+
     // Controllo se c'è il parametro di condivisione nell'URL
     const urlParams = new URLSearchParams(window.location.search);
     const sharedData = urlParams.get('r');
@@ -194,6 +196,11 @@ function selectAnswer(value, btnElement) {
   btnElement.classList.add("selected");
 
   saveState();
+
+  // Auto-avanti dopo un breve delay per mostrare l'animazione
+  setTimeout(() => {
+    goNext();
+  }, 400);
 }
 
 function goNext() {
@@ -309,6 +316,21 @@ function processScores(normalizedScores) {
       }
     });
   }
+
+  
+  // BADGES LOGIC
+  let badges = [];
+  if (userAnswers["ID_REL"] === -2) badges.push({name: "Ateo", color: "#8a2be2"});
+  if (userAnswers["AM_ANI"] === -2) badges.push({name: "Vegano", color: "#32cd32"});
+  if (userAnswers["EC_COM"] === -2) badges.push({name: "Comunista", color: "#ff4949"});
+  if (userAnswers["E3"] === 2) badges.push({name: "Liberista", color: "#f1c40f"});
+
+  let badgesHTML = "";
+  if (badges.length > 0) {
+    badgesHTML = badges.map(b => `<div class="badge-sticker" style="background-color: ${b.color};">${b.name}</div>`).join("");
+  }
+  let badgesContainer = document.getElementById("badges-container");
+  if(badgesContainer) badgesContainer.innerHTML = badgesHTML;
 
   showResults(normalizedScores, top3, bottom3, closestIdeology);
 }
@@ -483,6 +505,7 @@ function toggleCoalitions() {
   }
 }
 
+/* OLD CODE COMMENTED OUT AS REQUESTED
 function drawCompass(userX, userY) {
   const canvas = document.getElementById("compass-canvas");
   const ctx = canvas.getContext("2d");
@@ -596,6 +619,119 @@ function drawCompass(userX, userY) {
     toggleCoalitions();
   }
 }
+*/
+
+// NUOVO CODICE NEO-BRUTALISTA
+function drawCompass(userX, userY) {
+  const canvas = document.getElementById("compass-canvas");
+  const ctx = canvas.getContext("2d");
+  const w = canvas.width;
+  const h = canvas.height;
+
+  // disegna lo sfondo Brutalista con colori saturi e bordi netti
+  ctx.fillStyle = "#ff4949"; // rosso autoritario-sinistra
+  ctx.fillRect(0, 0, w / 2, h / 2);
+  ctx.fillStyle = "#3498db"; // blu autoritario-destra
+  ctx.fillRect(w / 2, 0, w / 2, h / 2);
+  ctx.fillStyle = "#2ecc71"; // verde libertario-sinistra
+  ctx.fillRect(0, h / 2, w / 2, h / 2);
+  ctx.fillStyle = "#f1c40f"; // giallo libertario-destra
+  ctx.fillRect(w / 2, h / 2, w / 2, h / 2);
+
+  // Disegna la griglia interna spessa e scura
+  const stepX = w / 20;
+  const stepY = h / 20;
+
+  ctx.beginPath();
+  for (let i = 1; i < 20; i++) {
+    if (i === 10) continue; // Salta la linea centrale che sarà nera e più spessa
+    // Linee verticali
+    ctx.moveTo(i * stepX, 0);
+    ctx.lineTo(i * stepX, h);
+    // Linee orizzontali
+    ctx.moveTo(0, i * stepY);
+    ctx.lineTo(w, i * stepY);
+  }
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.3)"; // Griglia scura, spessa
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Disegna gli assi centrali ultra spessi e neri
+  ctx.beginPath();
+  ctx.moveTo(0, h / 2);
+  ctx.lineTo(w, h / 2);
+  ctx.moveTo(w / 2, 0);
+  ctx.lineTo(w / 2, h);
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 6;
+  ctx.stroke();
+
+  const overlay = document.getElementById("compass-overlay");
+  overlay.innerHTML = "";
+
+  parties.forEach(party => {
+    let px = ((party.axes.economia + 100) / 200) * 100;
+    let py = (1 - ((party.axes.autorita + 100) / 200)) * 100;
+    overlay.innerHTML += `<img src="${party.logo}" class="party-logo-compass" data-party-name="${party.name}" title="${party.name}" style="left: ${px}%; top: ${py}%;">`;
+  });
+
+  if (ideologies && ideologies.length > 0) {
+    ideologies.forEach(ideo => {
+      if (ideo.area) {
+        let left = ((ideo.area.eMin + 100) / 200) * 100;
+        let width = ((ideo.area.eMax - ideo.area.eMin) / 200) * 100;
+        let top = (1 - ((ideo.area.aMax + 100) / 200)) * 100;
+        let height = ((ideo.area.aMax - ideo.area.aMin) / 200) * 100;
+
+        overlay.innerHTML += `<div class="ideology-area-compass" style="left: ${left}%; top: ${top}%; width: ${width}%; height: ${height}%; background-color: ${ideo.color};">
+                  <span class="ideology-area-label">${ideo.name}</span>
+              </div>`;
+      }
+    });
+  }
+
+  // Disegna il baricentro delle coalizioni
+  if (coalitions) {
+    for (const coalName in coalitions) {
+      let totalWeight = 0;
+      let weightedEcon = 0;
+      let weightedAuth = 0;
+
+      if (coalitions[coalName].parties) {
+        coalitions[coalName].parties.forEach(pName => {
+          let partyObj = parties.find(p => p.name === pName);
+          if (partyObj && partyObj.poll !== undefined) {
+            let weight = partyObj.poll;
+            totalWeight += weight;
+            weightedEcon += partyObj.axes.economia * weight;
+            weightedAuth += partyObj.axes.autorita * weight;
+          }
+        });
+      }
+
+      if (totalWeight > 0) {
+        let avgEcon = weightedEcon / totalWeight;
+        let avgAuth = weightedAuth / totalWeight;
+        let left = ((avgEcon + 100) / 200) * 100;
+        let top = (1 - ((avgAuth + 100) / 200)) * 100;
+
+        overlay.innerHTML += `<div class="coalition-barycenter" data-coalition="${coalName}" title="Baricentro ${coalName}" style="left: ${left}%; top: ${top}%; background-color: ${coalitions[coalName].color};"></div>`;
+      }
+    }
+  }
+
+  let uX = ((userX + 100) / 200) * 100;
+  let uY = (1 - ((userY + 100) / 200)) * 100;
+  overlay.innerHTML += `<div class="user-dot-compass" style="left: ${uX}%; top: ${uY}%;"></div>`;
+
+  // Restore switch states if they were checked
+  if (document.getElementById("toggle-ideologies") && document.getElementById("toggle-ideologies").checked) {
+    toggleIdeologies();
+  }
+  if (document.getElementById("toggle-coalitions") && document.getElementById("toggle-coalitions").checked) {
+    toggleCoalitions();
+  }
+}
 
 function drawExtraAxes(scores) {
   const container = document.getElementById("extra-axes-container");
@@ -611,7 +747,7 @@ function drawExtraAxes(scores) {
         '<i class="fa-solid fa-rainbow" style="color: #e6235aff;"></i>&nbsp;<i class="fa-solid fa-peace" style="color: #e6235aff;"></i>',
       rightIcon:
         '<i class="fa-solid fa-building-columns" style="color: #440098ff;"></i>&nbsp;<i class="fa-solid fa-people-roof" style="color: #440098ff;"></i>',
-      gradient: "linear-gradient(90deg, #e6235aff 0%, #440098ff 100%)", // Magenta chiaro -> Viola scuro
+      gradient: "linear-gradient(90deg, #e6235aff 0%, #440098ff 100%)",
     },
     {
       key: 'nazione',
@@ -630,7 +766,7 @@ function drawExtraAxes(scores) {
         '<i class="fa-solid fa-hand-holding-heart" style="color: #a6cd32ff;"></i>&nbsp;<i class="fa-solid fa-book-open" style="color: #a6cd32ff;"></i>',
       rightIcon:
         '<i class="fa-solid fa-handcuffs" style="color: #a20000ff;"></i></i>&nbsp;<i class="fa-solid fa-gavel" style="color: #a20000ff;"></i>',
-      gradient: "linear-gradient(90deg, #a6cd32ff 0%, #a20000ff 100%)", // Verde-giallo -> Rosso scuro
+      gradient: "linear-gradient(90deg, #a6cd32ff 0%, #a20000ff 100%)",
     },
     {
       key: "ambiente",
@@ -641,7 +777,7 @@ function drawExtraAxes(scores) {
         '<i class="fa-solid fa-leaf" style="color: #32cd32;"></i>&nbsp;<i class="fa-solid fa-recycle" style="color: #32cd32;"></i>',
       rightIcon:
         '<i class="fa-solid fa-industry" style="color: #614d3aff;"></i>&nbsp;<i class="fa-solid fa-gear" style="color: #614d3aff;"></i>',
-      gradient: "linear-gradient(90deg, #32cd32 0%, #614d3aff 100%)", // Verde brillante -> Grigio industriale
+      gradient: "linear-gradient(90deg, #32cd32 0%, #614d3aff 100%)",
     },
   ];
 
@@ -649,45 +785,59 @@ function drawExtraAxes(scores) {
     let score = scores[axis.key];
     let percentPos = ((score + 100) / 200) * 100;
 
-    // genera i loghi dei partiti sull'asse
-    let partyGroups = {};
-    parties.forEach((party) => {
-      let pScore = party.axes[axis.key];
-      let pPercent = ((pScore + 100) / 200) * 100;
-      if (!partyGroups[pPercent]) {
-        partyGroups[pPercent] = [];
+    // Sorting parties by their position on this axis
+    let sortedParties = parties.map(p => {
+      return { party: p, percent: ((p.axes[axis.key] + 100) / 200) * 100 };
+    }).sort((a, b) => a.percent - b.percent);
+
+    // Grouping nearby parties (clustering)
+    let groupedClusters = [];
+    let currentCluster = [];
+    
+    sortedParties.forEach(p => {
+      if (currentCluster.length === 0) {
+        currentCluster.push(p);
+      } else {
+        let dist = p.percent - currentCluster[currentCluster.length - 1].percent;
+        if (dist <= 4.5) { // 4.5% tolerance for grouping
+          currentCluster.push(p);
+        } else {
+          groupedClusters.push(currentCluster);
+          currentCluster = [p];
+        }
       }
-      partyGroups[pPercent].push(party);
     });
+    if (currentCluster.length > 0) groupedClusters.push(currentCluster);
 
     let partyLogosHTML = "";
-    for (let pPercent in partyGroups) {
-      let group = partyGroups[pPercent];
-      let combinedTitle = group.map(p => p.name).join(", ");
+    groupedClusters.forEach((cluster) => {
+      let avgPercent = cluster.reduce((sum, p) => sum + p.percent, 0) / cluster.length;
+      let combinedTitle = cluster.map(p => p.party.name).join(", ");
 
       let tooltipContent = "";
-      if (group.length > 1) {
-        // Se ci sono più partiti, mostriamo tutti i loro loghi nel tooltip
-        tooltipContent = group.map(p => `<img src="${p.logo}" class="tooltip-logo" title="${p.name}">`).join("");
+      if (cluster.length > 1) {
+        tooltipContent = cluster.map(p => `<img src="${p.party.logo}" class="tooltip-logo" title="${p.party.name}">`).join("");
       } else {
-        // Se c'è un solo partito, mostriamo semplicemente il nome
-        tooltipContent = `<span class="tooltip-text">${group[0].name}</span>`;
+        tooltipContent = `<span class="tooltip-text">${cluster[0].party.name}</span>`;
       }
 
-      let coverParty = group[group.length - 1]; // Usiamo l'ultimo aggiunto come cover, o il primo, è uguale. Scegliamo il primo:
-      coverParty = group[0];
+      let clusterLogos = cluster.map((p, i) => {
+        let zIndex = 50 - i;
+        let marginLeft = i > 0 ? "-18px" : "0"; // Sovrapposizione parziale orizzontale
+        return `<img src="${p.party.logo}" class="party-logo-axis" style="margin-left: ${marginLeft}; z-index: ${zIndex}; position: relative; width: 34px; height: 34px;" title="${combinedTitle}">`;
+      }).join("");
 
       partyLogosHTML += `
-        <div class="party-axis-group" style="left: ${pPercent}%;">
-            <img src="${coverParty.logo}" class="party-logo-axis" title="${combinedTitle}">
+        <div class="party-axis-group" style="left: ${avgPercent}%; display: flex; align-items: center; justify-content: center;">
+            ${clusterLogos}
             <div class="custom-tooltip">${tooltipContent}</div>
         </div>
       `;
-    }
+    });
 
     let html = `
             <div class="axis-row">
-                <h4 style="margin: 15px 0 5px 0; color: #444; border-bottom: 1px solid #eee; padding-bottom: 5px;">${axis.title}</h4>
+                <h4>${axis.title}</h4>
                 <div class="axis-labels">
                     <span>${axis.leftLabel}</span>
                     <span>${axis.rightLabel}</span>

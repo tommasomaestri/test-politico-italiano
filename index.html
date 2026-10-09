@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Politico Italiano</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-brutal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
 </head>
 
 <body>
+
 
     <div id="app-container">
 
@@ -38,6 +39,16 @@
                     <span class="btn-title">Test Rapido</span>
                     <span class="btn-subtitle">~ 4 minuti • Risultato molto approssimativo</span>
                 </button>
+            </div>
+
+            <div class="homepage-disclaimer" style="margin-top: 40px; text-align: left; background: #fff; border: 3px solid #000; padding: 20px; box-shadow: 4px 4px 0px #000; font-size: 0.85em; line-height: 1.5;">
+                <h4 style="margin-top: 0; margin-bottom: 10px; border-bottom: 2px solid #000; padding-bottom: 5px;"><i class="fa-solid fa-triangle-exclamation"></i> Prima di iniziare</h4>
+                <p style="margin: 0 0 10px 0;">Questo strumento è pensato come una <strong>bussola elettorale</strong> per aiutarti a orientare il tuo voto, più che come un'analisi accademica delle ideologie politiche. Non ha valenza scientifica né pretese di verità assoluta.</p>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li style="margin-bottom: 5px;"><strong>Posizionamento dei Partiti:</strong> Le posizioni assegnate ai partiti si basano sull'analisi dei programmi e sulle dichiarazioni pubbliche dei loro esponenti. Essendo la politica una materia fluida, queste stime non possono rispecchiare al 100% la complessità della realtà.</li>
+                    <li style="margin-bottom: 5px;"><strong>Argomentazioni:</strong> Per offrirti una panoramica neutrale ed evitare il più possibile pregiudizi autoriali (bias), i paragrafi con i "pro" e i "contro" presentati in ogni domanda sono stati generati e bilanciati tramite intelligenza artificiale.</li>
+                    <li><strong>Calcolo dell'Affinità:</strong> La tua percentuale di compatibilità con i vari partiti viene calcolata matematicamente (tramite distanza euclidea) confrontando le tue risposte con le coordinate dei partiti su sei assi tematici specifici. Tieni presente che gli assi principali del compasso (Economia e Autorità) hanno un peso matematico decisamente maggiore nel calcolo finale rispetto agli assi secondari (es. Ambiente o Giustizia).</li>
+                </ul>
             </div>
         </div>
 
@@ -75,6 +86,7 @@
                 <h4 style="color: #666; margin-bottom: 5px; font-weight: normal;">La tua ideologia più affine:</h4>
                 <h2 id="user-ideology" style="color: #222; margin-top: 0; font-size: 2.2em; letter-spacing: -0.5px;">...
                 </h2>
+                <div id="badges-container"></div>
             </div>
 
             <div class="compass-container">
@@ -126,7 +138,8 @@
                     coalizione. Questo punto è calcolato come media ponderata delle posizioni dei partiti membri, dove
                     il peso di ciascun partito è proporzionale al suo consenso stimato (sondaggi). Ha uno scopo
                     indicativo basato sul calcolo matematico, e non riflette necessariamente un programma di coalizione
-                    concordato. Il sondaggio utilizzato è Supermedia YouTrend/Agi del 23/04/2026.
+                    concordato. Il sondaggio utilizzato è "Politiche - 9 Settembre 2026" di BiDiMedia s.r.l. del
+                    09/09/2026.
                 </div>
             </div>
 
@@ -152,7 +165,10 @@
                 </div>
             </div>
 
-            <button id="download-results-btn" class="floating-mobile-btn" onclick="downloadResults()" data-html2canvas-ignore="true">
+
+
+            <button id="download-results-btn" class="floating-mobile-btn" onclick="downloadResults()"
+                data-html2canvas-ignore="true">
                 <i class="fa-solid fa-camera"></i> Condividi immagine
             </button>
 

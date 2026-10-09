@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Enrico Berlinguer",
+    "quote": "\"La questione morale esiste da tempo, ma ormai essa è diventata la questione politica prima ed essenziale.\"",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Enrico_Berlinguer.jpg/330px-Enrico_Berlinguer.jpg",
+    "axes": {
+      "economia": -80,
+      "autorita": 10,
+      "identita": -40,
+      "nazione": 0,
+      "giustizia": 20,
+      "ambiente": 30
+    },
+    "shortName": "Berlinguer"
+  },
+  {
+    "name": "Alcide De Gasperi",
+    "quote": "\"Un politico guarda alle prossime elezioni. Uno statista guarda alla prossima generazione.\"",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Alcide_De_Gasperi_1950s.jpg/330px-Alcide_De_Gasperi_1950s.jpg",
+    "axes": {
+      "economia": 20,
+      "autorita": -20,
+      "identita": 60,
+      "nazione": -40,
+      "giustizia": 10,
+      "ambiente": 50
+    },
+    "shortName": "De Gasperi"
+  },
+  {
+    "name": "Karl Marx",
+    "quote": "\"I filosofi hanno solo interpretato il mondo in modi diversi; si tratta ora di cambiarlo.\"",
+    "image": "img/historical/hist_2.jpg",
+    "axes": {
+      "economia": -100,
+      "autorita": 40,
+      "identita": -80,
+      "nazione": -90,
+      "giustizia": -20,
+      "ambiente": 40
+    },
+    "shortName": "Marx"
+  },
+  {
+    "name": "Ronald Reagan",
+    "quote": "\"Lo Stato non è la soluzione al nostro problema; lo Stato è il problema.\"",
+    "image": "img/historical/hist_3.jpg",
+    "axes": {
+      "economia": 90,
+      "autorita": 30,
+      "identita": 70,
+      "nazione": 60,
+      "giustizia": 80,
+      "ambiente": 80
+    },
+    "shortName": "Reagan"
+  },
+  {
+    "name": "Camillo Benso, conte di Cavour",
+    "quote": "\"Libera Chiesa in libero Stato.\"",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Camillo_Benso_Conte_di_Cavour.jpg/330px-Camillo_Benso_Conte_di_Cavour.jpg",
+    "axes": {
+      "economia": 60,
+      "autorita": -10,
+      "identita": -30,
+      "nazione": 80,
+      "giustizia": 40,
+      "ambiente": 70
+    },
+    "shortName": "Cavour"
+  },
+  {
+    "name": "Giorgio Almirante",
+    "quote": "\"Non rinnegare, non restaurare.\"",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Giorgio_Almirante_1979.jpg/330px-Giorgio_Almirante_1979.jpg",
+    "axes": {
+      "economia": 0,
+      "autorita": 80,
+      "identita": 90,
+      "nazione": 90,
+      "giustizia": 90,
+      "ambiente": 50
+    },
+    "shortName": "Almirante"
+  },
+  {
+    "name": "Winston Churchill",
+    "quote": "\"Il vizio intrinseco del capitalismo è l'ineguale divisione dei beni; la virtù intrinseca del socialismo è l'uguale divisione della miseria.\"",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Sir_Winston_Churchill_-_19086236948.jpg/330px-Sir_Winston_Churchill_-_19086236948.jpg",
+    "axes": {
+      "economia": 50,
+      "autorita": 40,
+      "identita": 60,
+      "nazione": 70,
+      "giustizia": 70,
+      "ambiente": 60
+    },
+    "shortName": "Churchill"
+  },
+  {
+    "name": "Margaret Thatcher",
+    "quote": "\"Non esiste la società: esistono individui, uomini e donne, ed esistono le famiglie.\"",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Margaret_Thatcher.png/330px-Margaret_Thatcher.png",
+    "axes": {
+      "economia": 100,
+      "autorita": 50,
+      "identita": 60,
+      "nazione": 70,
+      "giustizia": 80,
+      "ambiente": 90
+    },
+    "shortName": "Thatcher"
+  },
+  {
+    "name": "Mahatma Gandhi",
+    "quote": "\"Sii il cambiamento che vuoi vedere nel mondo.\"",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg/330px-Mahatma-Gandhi%2C_studio%2C_1931.jpg",
+    "axes": {
+      "economia": -30,
+      "autorita": -80,
+      "identita": -10,
+      "nazione": 30,
+      "giustizia": -90,
+      "ambiente": -70
+    },
+    "shortName": "Gandhi"
+  },
+  {
+    "name": "Marco Pannella",
+    "quote": "\"Dal letame nascono i fior, dai diamanti non nasce niente.\"",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Marco_Pannella_1985.jpg/330px-Marco_Pannella_1985.jpg",
+    "axes": {
+      "economia": 50,
+      "autorita": -90,
+      "identita": -90,
+      "nazione": -50,
+      "giustizia": -80,
+      "ambiente": -20
+    },
+    "shortName": "Pannella"
+  }
+]
